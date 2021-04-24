@@ -48,7 +48,6 @@ public class Building : MonoBehaviour
     {
         float result = (float)_production;
         result = Mathf.Pow(_productionSpeed, 2.12f) * 0.0493f;
-        result = Mathf.RoundToInt(result);
         return result;
     }
 }
