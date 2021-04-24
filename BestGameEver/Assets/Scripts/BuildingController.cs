@@ -11,32 +11,9 @@ public class BuildingController : MonoBehaviour
     private bool _isFoundStart;
     private Vector3 _endPosition;
     [SerializeField] private Building _prefabStructure;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    RaycastHit hit;
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        //    if (Physics.Raycast(ray, out hit, RayLength, LayerMask))
-        //    {
-        //        Vector3 position = hit.collider.transform.GetChild(0).position;
-        //        if (hit.collider.GetComponent<PositionToBuild>().IsOcupied() == false)
-        //        {
-        //            BuildStructure(position);
-        //            hit.collider.GetComponent<PositionToBuild>().SetIsOcupied(true);
-        //        }
-
-        //    }
-        //}
-
-
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -47,19 +24,19 @@ public class BuildingController : MonoBehaviour
                 if (hit.collider.GetComponent<PositionToBuild>().IsOcupied())
                 {
                     print(1);
-                    _startPosition = hit.collider.transform.GetChild(0).position;
+                    _startPosition = hit.collider.GetComponent<PositionToBuild>().Position.position;
                     _isFoundStart = true;
                 }
                 if(!hit.collider.GetComponent<PositionToBuild>().IsOcupied() && _isFoundStart)
                 {
                     print(2);
-                    _endPosition = hit.collider.transform.GetChild(0).position;
+                    _endPosition = hit.collider.GetComponent<PositionToBuild>().Position.position;
                     float distanse = Vector3.Distance(_startPosition, _endPosition);
                     if (distanse <= _ropeLength)
                     {
                         print(3);
-                        Vector3 position = hit.collider.transform.GetChild(0).position;
-                        BuildStructure(position);
+                        Vector3 position = hit.collider.GetComponent<PositionToBuild>().Position.position;
+                        BuildStructure(position, hit.collider.GetComponent<PositionToBuild>());
                         hit.collider.GetComponent<PositionToBuild>().SetIsOcupied(true);
                         _isFoundStart = false;
                     }
