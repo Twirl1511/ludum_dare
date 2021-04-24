@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuildingController : MonoBehaviour
 {
     public float RayLength;
     public LayerMask LayerMask;
-    [SerializeField] private float _ropeLength;
+    public float _ropeLength;
     private Vector3 _startPosition;
     private bool _isFoundStart;
     private Vector3 _endPosition;
+    private Building _baseBuilding = null;
     [SerializeField] private Building _prefabStructure;
 
     void Update()
@@ -21,23 +20,22 @@ public class BuildingController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, RayLength, LayerMask))
             {
-                if (hit.collider.GetComponent<PositionToBuild>().IsOcupied())
+                PositionToBuild platform = hit.collider.GetComponent<PositionToBuild>();
+                if (platform.IsOcupied())
                 {
-                    print(1);
-                    _startPosition = hit.collider.GetComponent<PositionToBuild>().Position.position;
+                    _startPosition = platform.Position.position;
                     _isFoundStart = true;
+                    _baseBuilding = platform.building;
                 }
-                if(!hit.collider.GetComponent<PositionToBuild>().IsOcupied() && _isFoundStart)
+                if(!platform.IsOcupied() && _isFoundStart)
                 {
-                    print(2);
-                    _endPosition = hit.collider.GetComponent<PositionToBuild>().Position.position;
+                    _endPosition = platform.Position.position;
                     float distanse = Vector3.Distance(_startPosition, _endPosition);
                     if (distanse <= _ropeLength)
                     {
-                        print(3);
-                        Vector3 position = hit.collider.GetComponent<PositionToBuild>().Position.position;
-                        BuildStructure(position, hit.collider.GetComponent<PositionToBuild>());
-                        hit.collider.GetComponent<PositionToBuild>().SetIsOcupied(true);
+                        Vector3 position = platform.Position.position;
+                        BuildStructure(position, platform);
+                        platform.SetIsOcupied(true);
                         _isFoundStart = false;
                     }
                     else
@@ -45,17 +43,19 @@ public class BuildingController : MonoBehaviour
                         _isFoundStart = false;
                     }
                 }
-
             }
         }
-
-
     }
 
     private void BuildStructure(Vector3 position, PositionToBuild platform)
     {
         Building building = Instantiate(_prefabStructure, position, Quaternion.identity, platform.transform);
+        platform.building = building;
         building._platform = platform.GetComponent<PlatformMove>();
+        building._platform.InitFall();
+        building._ropeRender.SetPos1(_baseBuilding.PipePosition);
+        building._ropeRender.SetPos2(building.PipePosition);
+        building._ropeRender.Init();
+        building._ropeRender.SetActive(true);
     }
-
 }

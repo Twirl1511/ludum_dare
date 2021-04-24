@@ -12,7 +12,7 @@ public class PlatformMove : MonoBehaviour
     [HideInInspector] public float _mass = 0f;
     private Vector3 _startPosition;
 
-    void Start()
+    public void InitFall()
     {
         _startPosition = transform.position;
         InvokeRepeating(nameof(MoveDown), 5f, 5f);

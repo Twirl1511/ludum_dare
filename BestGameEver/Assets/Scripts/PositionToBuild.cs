@@ -5,6 +5,7 @@ using UnityEngine;
 public class PositionToBuild : MonoBehaviour
 {
     public Transform Position;
+    public Building building;
     [SerializeField] private bool _isOcupied;
 
     public bool IsOcupied()

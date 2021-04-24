@@ -4,6 +4,8 @@ public class Building : MonoBehaviour
 {
     [SerializeField] private int _production;
     [SerializeField] private float _productionSpeed;
+    public Transform PipePosition;
+    public RopeRendering _ropeRender;
     [HideInInspector] public PlatformMove _platform;
 
     void Start()
@@ -13,6 +15,7 @@ public class Building : MonoBehaviour
 
     private void Production()
     {
-        _platform._mass += _production;
+        if(_platform != null)
+            _platform._mass += _production;
     }
 }
