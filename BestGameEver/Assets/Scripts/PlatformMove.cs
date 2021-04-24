@@ -11,7 +11,8 @@ public class PlatformMove : MonoBehaviour
     // Mass = 2   |   Height = -0.2
     // Mass = 10   |   Height = -1.0
 
-    [HideInInspector] public float _mass = 0f;
+    private float _prevMass = 0f;
+    public float _mass = 0f;
     private Vector3 _startPosition;
 
     public void InitFall()
@@ -40,6 +41,10 @@ public class PlatformMove : MonoBehaviour
 
     public void MoveDown()
     {
+        float deltaMass = Mathf.Abs(_mass - _prevMass);
+        if (deltaMass < 10)
+            return;
+        _prevMass = _mass;
         float newY = _startPosition.y - _mass / fallDistanceModifier;
         transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
     }
