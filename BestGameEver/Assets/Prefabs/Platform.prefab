@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  updateSpeed: 10
+  fallDistanceModifier: 50
   _mass: 0
 --- !u!114 &3282339842699594537
 MonoBehaviour:
@@ -185,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Position: {fileID: 6676794214931636107}
+  building: {fileID: 0}
   _isOcupied: 0
 --- !u!1 &7351381000804075875
 GameObject:

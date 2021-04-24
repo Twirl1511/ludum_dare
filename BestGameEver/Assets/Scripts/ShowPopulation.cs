@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ShowPopulation : MonoBehaviour
 {
     [SerializeField] private Text _populationCount;
-    [HideInInspector] public PlatformMove _platform;
+    public PlatformMove _platform;
     void Start()
     {
         

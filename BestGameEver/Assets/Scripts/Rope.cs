@@ -2,6 +2,7 @@
 
 public class Rope : MonoBehaviour
 {
+    public Building building;
     public RopeRendering renderer;
     public float _ropeLength;
 
@@ -15,6 +16,7 @@ public class Rope : MonoBehaviour
         if(renderer._length > _ropeLength)
         {
             renderer.SetActive(false);
+            building.ConnectedBuilding = null;
         }
     }
 }

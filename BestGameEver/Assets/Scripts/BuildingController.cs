@@ -26,6 +26,7 @@ public class BuildingController : MonoBehaviour
                     _startPosition = platform.Position.position;
                     _isFoundStart = true;
                     _baseBuilding = platform.building;
+                    _baseBuilding.Highlight(true);
                 }
                 if(!platform.IsOcupied() && _isFoundStart)
                 {
@@ -42,6 +43,7 @@ public class BuildingController : MonoBehaviour
                     {
                         _isFoundStart = false;
                     }
+                    _baseBuilding.Highlight(false);
                 }
             }
         }
@@ -55,6 +57,7 @@ public class BuildingController : MonoBehaviour
         /// для отображения количества людей в здании
         building.GetComponent<ShowPopulation>()._platform = building._platform;
         building._platform.InitFall();
+        building.ConnectedBuilding = _baseBuilding;
         building._ropeRender.SetPos1(_baseBuilding.PipePosition);
         building._ropeRender.SetPos2(building.PipePosition);
         building._ropeRender.Init();

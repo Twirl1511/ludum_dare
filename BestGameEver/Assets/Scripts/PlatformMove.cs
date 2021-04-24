@@ -4,6 +4,8 @@ using DG.Tweening;
 public class PlatformMove : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
+    [SerializeField] private float updateSpeed = 10f;
+    [SerializeField] private float fallDistanceModifier = 10f;
 
     // Mass = 0   |   Height = 0
     // Mass = 2   |   Height = -0.2
@@ -15,7 +17,7 @@ public class PlatformMove : MonoBehaviour
     public void InitFall()
     {
         _startPosition = transform.position;
-        InvokeRepeating(nameof(MoveDown), 5f, 5f);
+        InvokeRepeating(nameof(MoveDown), updateSpeed, updateSpeed);
     }
 
     void Update()
@@ -38,7 +40,7 @@ public class PlatformMove : MonoBehaviour
 
     public void MoveDown()
     {
-        float newY = _startPosition.y - _mass / 10f;
+        float newY = _startPosition.y - _mass / fallDistanceModifier;
         transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
     }
 }
