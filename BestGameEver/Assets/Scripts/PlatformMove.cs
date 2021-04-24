@@ -5,7 +5,7 @@ public class PlatformMove : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private float updateSpeed = 10f;
-    [SerializeField] private float fallDistanceModifier = 10f;
+    [SerializeField] private float moveDistance = 10f;
 
     // Mass = 0   |   Height = 0
     // Mass = 2   |   Height = -0.2
@@ -18,7 +18,7 @@ public class PlatformMove : MonoBehaviour
     public void InitFall()
     {
         _startPosition = transform.position;
-        InvokeRepeating(nameof(MoveDown), updateSpeed, updateSpeed);
+        InvokeRepeating(nameof(MoveDown), 2f, updateSpeed);
     }
 
     void Update()
@@ -45,7 +45,7 @@ public class PlatformMove : MonoBehaviour
         if (deltaMass < 10)
             return;
         _prevMass = _mass;
-        float newY = _startPosition.y - _mass / fallDistanceModifier;
+        float newY = _startPosition.y - moveDistance;
         transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
     }
 }

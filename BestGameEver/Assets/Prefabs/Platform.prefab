@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   updateSpeed: 1
-  fallDistanceModifier: 50
+  moveDistance: 0.5
   _mass: 0
 --- !u!114 &3282339842699594537
 MonoBehaviour:
