@@ -1,31 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using DG.Tweening;
 
 public class PlatformMove : MonoBehaviour
 {
-    [SerializeField] private float speed = 10;
-    
-    
+    [SerializeField] private float speed = 1;
+
+    // Mass = 0   |   Height = 0
+    // Mass = 2   |   Height = -0.2
+    // Mass = 10   |   Height = -1.0
+
+    [SerializeField] private float _mass = 0f;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            MoveDown(1f);
+            MoveDown();
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            _mass++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            _mass--;
         }
     }
 
-    public void MoveDown(float mass)
+    public void MoveDown()
     {
-        float y = transform.position.y;
-        
-            transform.DOMoveY(y - mass, speed);
+        float newY = 0f - _mass / 10f;
+        transform.DOMoveY(newY, speed);
     }
 }
