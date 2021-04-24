@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PositionToBuild : MonoBehaviour
 {
-    private bool _isOcupied;
+    [SerializeField] private bool _isOcupied;
 
     public bool IsOcupied()
     {
