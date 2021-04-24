@@ -214,7 +214,7 @@ MonoBehaviour:
   _renderer: {fileID: 0}
   _production: 1
   _pipeSuckPower: 1
-  _productionSpeed: 10
+  _productionSpeed: 1
   ConnectedBuilding: {fileID: 0}
   PipePosition: {fileID: 2099654535270563670}
   _ropeRender: {fileID: 7507563641135761222}
