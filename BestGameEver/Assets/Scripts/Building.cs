@@ -12,6 +12,10 @@ public class Building : MonoBehaviour
     public PlatformMove _platform;
     public int _maxMass = 500;
 
+    [Header("Формула")]
+    [SerializeField] private float multiplyBy = 0.107f;
+    [SerializeField] private float powerBy = 1.05f;
+
     void Start()
     {
         _renderer = GetComponent<MeshRenderer>();
@@ -47,7 +51,7 @@ public class Building : MonoBehaviour
     private float CalculateProduction()
     {
         float result = (float)_production;
-        result = Mathf.Pow(_platform._mass * _productionSpeed * 0.107f, 1.05f);
+        result = Mathf.Pow(_platform._mass * _productionSpeed * multiplyBy, powerBy);
         return result;
     }
 }
