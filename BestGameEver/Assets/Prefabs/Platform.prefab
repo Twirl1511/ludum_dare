@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Position: {fileID: 6676794214931636107}
+  _isOcupied: 0
 --- !u!1 &7351381000804075875
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,6 +52,8 @@ public class BuildingController : MonoBehaviour
         Building building = Instantiate(_prefabStructure, position, Quaternion.identity, platform.transform);
         platform.building = building;
         building._platform = platform.GetComponent<PlatformMove>();
+        /// для отображения количества людей в здании
+        building.GetComponent<ShowPopulation>()._platform = building._platform;
         building._platform.InitFall();
         building._ropeRender.SetPos1(_baseBuilding.PipePosition);
         building._ropeRender.SetPos2(building.PipePosition);
