@@ -29,9 +29,8 @@ public class Building : MonoBehaviour
 
     private void Production()
     {
-        if (_platform != null)
-        {
-            _platform._mass += _production;
+        if(_platform != null)
+            _platform._mass += CalculateProduction();
             if(ConnectedBuilding != null && ConnectedBuilding._platform._mass >= _pipeSuckPower)
             {
                 ConnectedBuilding._platform._mass -= _pipeSuckPower;
@@ -43,5 +42,14 @@ public class Building : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private float CalculateProduction()
+    {
+        float result = (float)_production;
+        result = Mathf.Pow(_productionSpeed, 2.12f) * 0.0493f;
+        result = Mathf.RoundToInt(result);
+        
+        return result;
     }
 }
