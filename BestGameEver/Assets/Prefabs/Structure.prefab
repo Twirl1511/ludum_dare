@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 0}
-  _production: 1
+  _production: 0
   _pipeSuckPower: 1
   _productionSpeed: 1
   ConnectedBuilding: {fileID: 0}
@@ -220,6 +220,8 @@ MonoBehaviour:
   _ropeRender: {fileID: 7507563641135761222}
   _platform: {fileID: 0}
   _maxMass: 500
+  multiplyBy: 0
+  powerBy: 1.05
 --- !u!114 &7507563641135761222
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class BuildingController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _canBuild)
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -32,7 +32,7 @@ public class BuildingController : MonoBehaviour
                     _baseBuilding = platform.building;
                     _baseBuilding.Highlight(true);
                 }
-                if (!platform.IsOcupied() && _isFoundStart)
+                if (!platform.IsOcupied() && _isFoundStart && _canBuild)
                 {
                     _endPosition = platform.Position.position;
                     float distanse = Vector3.Distance(_startPosition, _endPosition);
