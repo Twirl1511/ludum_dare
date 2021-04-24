@@ -16,6 +16,15 @@ public class Building : MonoBehaviour
     private void Production()
     {
         if(_platform != null)
-            _platform._mass += _production;
+            _platform._mass += CalculateProduction();
+    }
+
+    private float CalculateProduction()
+    {
+        float result = (float)_production;
+        result = Mathf.Pow(_productionSpeed, 2.12f) * 0.0493f;
+        result = Mathf.RoundToInt(result);
+        
+        return result;
     }
 }
