@@ -704,16 +704,6 @@ PrefabInstance:
       propertyPath: _platform
       value: 
       objectReference: {fileID: 1531246466}
-    - target: {fileID: 930356346089370186, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
-        type: 3}
-      propertyPath: _production
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 930356346089370186, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
-        type: 3}
-      propertyPath: _productionSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1913643259377755525, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
         type: 3}
       propertyPath: _platform
