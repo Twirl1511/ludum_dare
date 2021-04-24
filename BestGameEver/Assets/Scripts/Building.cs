@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int _production;
+    [SerializeField] private float _productionSpeed;
+    [HideInInspector] public PlatformMove _platform;
+
     void Start()
     {
-        
+        InvokeRepeating(nameof(Production), _productionSpeed, _productionSpeed);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Production()
     {
-        
+        _platform._mass += _production;
     }
 }

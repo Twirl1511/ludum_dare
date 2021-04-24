@@ -6,7 +6,7 @@ public class BuildingController : MonoBehaviour
 {
     public float RayLength;
     public LayerMask LayerMask;
-    [SerializeField] private GameObject _prefabStructure;
+    [SerializeField] private Building _prefabStructure;
     void Start()
     {
         
@@ -21,10 +21,10 @@ public class BuildingController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit, RayLength, LayerMask))
             {
-                Vector3 position = hit.collider.transform.GetChild(0).position;
                 if(hit.collider.GetComponent<PositionToBuild>().IsOcupied() == false)
                 {
-                    BuildStructure(position);
+                    Vector3 position = hit.collider.GetComponent<PositionToBuild>().Position.position;
+                    BuildStructure(position, hit.collider.GetComponent<PositionToBuild>());
                     hit.collider.GetComponent<PositionToBuild>().SetIsOcupied(true);
                 }
                 
@@ -33,10 +33,10 @@ public class BuildingController : MonoBehaviour
 
     }
 
-    private void BuildStructure(Vector3 position)
+    private void BuildStructure(Vector3 position, PositionToBuild platform)
     {
-        Instantiate(_prefabStructure, position, Quaternion.identity);
-        
+        Building building = Instantiate(_prefabStructure, position, Quaternion.identity, platform.transform);
+        building._platform = platform.GetComponent<PlatformMove>();
     }
 
 }

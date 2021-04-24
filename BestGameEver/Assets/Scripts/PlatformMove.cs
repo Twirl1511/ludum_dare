@@ -9,11 +9,13 @@ public class PlatformMove : MonoBehaviour
     // Mass = 2   |   Height = -0.2
     // Mass = 10   |   Height = -1.0
 
-    [SerializeField] private float _mass = 0f;
+    [HideInInspector] public float _mass = 0f;
+    private Vector3 _startPosition;
 
     void Start()
     {
-        
+        _startPosition = transform.position;
+        InvokeRepeating(nameof(MoveDown), 5f, 5f);
     }
 
     void Update()
@@ -36,7 +38,7 @@ public class PlatformMove : MonoBehaviour
 
     public void MoveDown()
     {
-        float newY = 0f - _mass / 10f;
-        transform.DOMoveY(newY, speed);
+        float newY = _startPosition.y - _mass / 10f;
+        transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
     }
 }

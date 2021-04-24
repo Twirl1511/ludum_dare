@@ -9,30 +9,45 @@ public class RopeRendering : MonoBehaviour
     [SerializeField] private Transform _p1;
     [SerializeField] private Transform _p2;
     [SerializeField] private float _pointStep = 0.2f;
-    private float _tension = .1f;
-    private float _length;
+    [SerializeField] private float _tension = 1f;
 
-    void Start()
+    private float _length;
+    private Vector3 basePos;
+    private Vector3 endPos;
+    private Vector3 direction;
+
+    private void Start()
     {
         _line = GetComponent<LineRenderer>();
-        Vector3 basePos = _p1.position;
-        Vector3 endPos = _p2.position;
-        Vector3 direction = endPos - basePos;
+        Init(_p1, _p2);
+    }
+
+    private void Init(Transform p1, Transform p2)
+    {
+        _p1 = p1;
+        _p2 = p2;
+        Reinit();
+    }
+
+    private void Reinit()
+    {
+        basePos = _p1.position;
+        endPos = _p2.position;
+        direction = endPos - basePos;
         _length = direction.magnitude;
-        int a = (int)(_length / _pointStep);
-        _line.positionCount = a;
         direction.Normalize();
-        for(int i = 0; i < _line.positionCount; i++)
+        int pointCount = (int)(_length / _pointStep);
+        _line.positionCount = pointCount;
+    }
+
+    private void Update()
+    {
+        Reinit();
+        for (int i = 0; i < _line.positionCount; i++)
         {
-            //_line.SetPosition(i, basePos + direction * i * _pointStep + Vector3.down * i * _tension * _curve.Evaluate(_length / (i * ));
+            _line.SetPosition(i, (basePos + direction * i * _pointStep) + Vector3.down * _tension * (_curve.Evaluate((i * _pointStep) / _length)));
         }
         _line.SetPosition(0, basePos);
         _line.SetPosition(_line.positionCount - 1, endPos);
-
-    }
-
-    void Update()
-    {
-        
     }
 }

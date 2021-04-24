@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PositionToBuild : MonoBehaviour
 {
+    public Transform Position;
     private bool _isOcupied;
 
     public bool IsOcupied()
