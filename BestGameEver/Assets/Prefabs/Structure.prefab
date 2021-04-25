@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3263554883411907951}
   - component: {fileID: 1866272391499380699}
   - component: {fileID: 6596524324363468959}
-  m_Name: PopulationDisplay
   m_Layer: 8
+  m_Name: PopulationDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,9 +305,9 @@ MonoBehaviour:
   - Height: 0
     SuckPower: 3
   - Height: 0.5
-    SuckPower: 5
+    SuckPower: 4
   - Height: 1
-    SuckPower: 7
+    SuckPower: 5
   _currentSuckIndex: 0
   _pipeSuckPower: 0
 --- !u!114 &7507563641135761222
@@ -408,7 +408,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -786,9 +786,8 @@ GameObject:
   - component: {fileID: 250491151875369569}
   - component: {fileID: 3921263406065160153}
   - component: {fileID: 654818538589268316}
-  m_Name: Background
   m_Layer: 8
-  - component: {fileID: 4571763270889591816}
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
