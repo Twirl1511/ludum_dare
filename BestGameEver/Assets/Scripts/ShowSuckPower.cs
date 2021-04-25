@@ -15,7 +15,7 @@ public class ShowSuckPower : MonoBehaviour
             if (_suckPowerCanvas.activeSelf == false)
                 _suckPowerCanvas.SetActive(true);
             _building.CalculateSuckPower();
-            _suckPowerCanvas.transform.position = _building._ropeRender.GetMiddlePos();
+            _suckPowerCanvas.transform.position = _building._ropeRender.GetMiddlePos() + Vector3.up * 0.35f;
             float deltaHeight = _building.ConnectedBuilding.transform.position.y - _building.transform.position.y;
             //_suckPower.text = $"{deltaHeight.ToString("0.00")}";
             //_suckPower.text = $"{deltaHeight.ToString("0.00")} \n {_building._pipeSuckPower.ToString("0.0")}";

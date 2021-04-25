@@ -43,7 +43,7 @@ public class RopeRendering : MonoBehaviour
 
     public Vector3 GetMiddlePos()
     {
-        return _line.GetPosition(_line.positionCount / 2);
+        return _line.GetPosition(_line.positionCount / 2 + 1);
     }
 
     private void Update()
