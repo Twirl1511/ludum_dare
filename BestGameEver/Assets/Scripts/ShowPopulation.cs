@@ -15,6 +15,6 @@ public class ShowPopulation : MonoBehaviour
 
     void Update()
     {
-        _populationCount.text = _platform._mass.ToString("0");
+        _populationCount.text = _platform.Mass.ToString("0");
     }
 }

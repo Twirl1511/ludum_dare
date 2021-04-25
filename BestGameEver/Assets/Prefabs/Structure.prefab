@@ -308,6 +308,7 @@ MonoBehaviour:
     SuckPower: 5
   - Height: 1
     SuckPower: 7
+  _currentSuckIndex: 0
   _pipeSuckPower: 0
 --- !u!114 &7507563641135761222
 MonoBehaviour:
@@ -516,15 +517,15 @@ RectTransform:
   m_GameObject: {fileID: 4787701919178748295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 8200903044916182053}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.42000008, y: 0.7500001}
-  m_SizeDelta: {x: -12.5599985, y: -4.5599995}
+  m_AnchoredPosition: {x: -0.38498878, y: 0.6000004}
+  m_SizeDelta: {x: 252.43002, y: 213.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6421884574592747923
 CanvasRenderer:
@@ -547,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.13536787, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.08805034, b: 0.6415094, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -555,11 +556,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

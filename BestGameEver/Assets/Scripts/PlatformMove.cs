@@ -9,37 +9,55 @@ public class PlatformMove : MonoBehaviour
     [SerializeField] private float moveDistance = 10f;
 
     [SerializeField] private Dependency[] _fallCD;
-    private float _cd = 1f;
+    [SerializeField] private float _cd = 1f;
+    [SerializeField] private float _deltaTimer = -1f;
 
     // Mass = 0   |   Height = 0
     // Mass = 2   |   Height = -0.2
     // Mass = 10   |   Height = -1.0
 
     private float _prevMass = 0f;
-    public float _mass = 0f;
+    private float _mass = 0f;
+    public float Mass
+    {
+        get
+        {
+            return _mass;
+        }
+        set
+        {
+            _mass = value;
+            SetNewCD();
+        }
+    }
     private Vector3 _startPosition;
 
     public void InitFall()
     {
         _startPosition = transform.position;
-        StartCoroutine(MoveDown());
+        _deltaTimer = 0f;
+        //StartCoroutine(MoveDown());
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (_deltaTimer >= 0f)
         {
-            MoveDown();
-        }
+            _deltaTimer += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            _mass++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _mass--;
+            if(_deltaTimer >= _cd)
+            {
+                float sign = Mathf.Sign(_mass - _prevMass);
+                float deltaMassAbs = Mathf.Abs(_mass - _prevMass);
+                if (deltaMassAbs >= 10)
+                {
+                    _prevMass = _mass;
+                    float newY = transform.position.y - moveDistance * sign;
+                    transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
+                    SetNewCD();
+                }
+                _deltaTimer = 0f;
+            }
         }
     }
 
@@ -47,16 +65,16 @@ public class PlatformMove : MonoBehaviour
     {
         while (true)
         {
+            //_deltaTimer = 0f;
             yield return new WaitForSeconds(_cd);
-
-            float deltaMass = Mathf.Abs(_mass - _prevMass);
-            if (deltaMass >= 10)
-            {
-                _prevMass = _mass;
-                float newY = _startPosition.y - moveDistance;
-                transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
-                SetNewCD();
-            }
+            //float deltaMass = Mathf.Abs(_mass - _prevMass);
+            //if (deltaMass >= 10)
+            //{
+            //    _prevMass = _mass;
+            //    float newY = _startPosition.y - moveDistance;
+            //    transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
+            //    SetNewCD();
+            //}
         }
     }
 

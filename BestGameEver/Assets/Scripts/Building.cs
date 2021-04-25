@@ -13,6 +13,7 @@ public class Building : MonoBehaviour
     public int _maxMass = 500;
 
     [SerializeField] private Dependency[] _suckPower;
+    [HideInInspector] public int _currentSuckIndex = 0;
     [HideInInspector] public float _pipeSuckPower = 0;
 
     //[Header("Формула")]
@@ -44,13 +45,13 @@ public class Building : MonoBehaviour
     private void Production()
     {
         if (_platform != null && _production > 0)
-            _platform._mass += _production;
-        if (ConnectedBuilding != null && ConnectedBuilding._platform._mass >= _pipeSuckPower)
+            _platform.Mass += _production;
+        if (ConnectedBuilding != null && ConnectedBuilding._platform.Mass >= _pipeSuckPower)
         {
-            ConnectedBuilding._platform._mass -= _pipeSuckPower;
-            _platform._mass += _pipeSuckPower;
+            ConnectedBuilding._platform.Mass -= _pipeSuckPower;
+            _platform.Mass += _pipeSuckPower;
         }
-        if (_platform._mass > _maxMass)
+        if (_platform.Mass > _maxMass)
         {
             Destroy(_platform.gameObject);
             Destroy(gameObject);
@@ -70,11 +71,13 @@ public class Building : MonoBehaviour
                 if(i < _suckPower.Length - 1 && deltaHeight < _suckPower[i + 1].Height)
                 {
                     _pipeSuckPower = _suckPower[i].SuckPower;
+                    _currentSuckIndex = i;
                     break;
                 }
                 if(i == _suckPower.Length - 1)
                 {
                     _pipeSuckPower = _suckPower[i].SuckPower;
+                    _currentSuckIndex = i;
                 }
             }
         }
