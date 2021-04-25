@@ -171,8 +171,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  updateSpeed: 1
   moveDistance: 0.5
+  _fallCD:
+  - Humans: 50
+    CD: 25
+  - Humans: 100
+    CD: 20
+  - Humans: 200
+    CD: 15
+  - Humans: 350
+    CD: 10
+  - Humans: 99999
+    CD: 5
   _mass: 0
 --- !u!114 &3282339842699594537
 MonoBehaviour:

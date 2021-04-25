@@ -35,7 +35,6 @@ public class Building : MonoBehaviour
     {
         if (_platform != null)
             _platform._mass += CalculateProduction();
-        print(_platform._mass);
         if (ConnectedBuilding != null && ConnectedBuilding._platform._mass >= _pipeSuckPower)
         {
             ConnectedBuilding._platform._mass -= _pipeSuckPower;
