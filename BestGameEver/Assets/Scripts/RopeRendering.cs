@@ -3,6 +3,7 @@
 public class RopeRendering : MonoBehaviour
 {
     private LineRenderer _line;
+    [SerializeField] private ParticleSystem _humanParticles;
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] public Transform _p1;
     [SerializeField] public Transform _p2;
@@ -68,9 +69,11 @@ public class RopeRendering : MonoBehaviour
     public void BrokePipe()
     {
         _broken = true;
-        _p2.parent = transform;
-        _p2.GetComponent<Collider>().enabled = true;
-        _p2.GetComponent<Rigidbody>().isKinematic = false;
+        _p2.parent = null;
+        _p2.position = GetMiddlePos();
+        Quaternion rot = Quaternion.LookRotation((_p2.position - _p1.position).normalized);
+        _p2.rotation = rot;
+        _humanParticles.Play();
     }
 
     public void Init()
@@ -95,12 +98,12 @@ public class RopeRendering : MonoBehaviour
     {
         if (_building.HasPipe)
         {
-            if (false)
+            if (_broken)
             {
                 Init();
                 for (int i = 0; i < _line.positionCount; i++)
                 {
-                    _line.SetPosition(i, (basePos + direction * i * _pointStep));
+                    _line.SetPosition(i, (basePos + direction * i * _pointStep) + Vector3.down * _tension * (_curve.Evaluate((i * _pointStep) / _length)));
                 }
                 _line.SetPosition(0, basePos);
                 _line.SetPosition(_line.positionCount - 1, endPos);

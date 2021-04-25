@@ -15,8 +15,8 @@ public class Rope : MonoBehaviour
     {
         if(renderer._length > _ropeLength)
         {
-            renderer.SetActive(false);
-            //renderer.BrokePipe();
+            //renderer.SetActive(false);
+            renderer.BrokePipe();
             building.ConnectedBuilding = null;
             building.BrokenPipe = true;
         }

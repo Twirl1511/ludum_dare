@@ -18,6 +18,7 @@ public class Building : MonoBehaviour
     [SerializeField] private Dependency[] _suckPower;
     [SerializeField] private DependencyPipe[] _dropSpeed;
     [HideInInspector] public int _currentSuckIndex = 0;
+    [HideInInspector] public int _suckArrows = 0;
     [HideInInspector] public float _pipeSuckPower = 0;
 
     //[Header("Формула")]
@@ -99,12 +100,14 @@ public class Building : MonoBehaviour
                 {
                     _pipeSuckPower = _suckPower[i].SuckPower;
                     _currentSuckIndex = i;
+                    _suckArrows = _suckPower.Length - _currentSuckIndex;
                     break;
                 }
                 if(i == _suckPower.Length - 1)
                 {
                     _pipeSuckPower = _suckPower[i].SuckPower;
                     _currentSuckIndex = i;
+                    _suckArrows = _suckPower.Length - _currentSuckIndex;
                 }
             }
         }

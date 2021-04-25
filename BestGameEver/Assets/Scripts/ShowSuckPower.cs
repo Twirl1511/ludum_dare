@@ -14,25 +14,20 @@ public class ShowSuckPower : MonoBehaviour
     {
         if (_building.ConnectedBuilding != null)
         {
-            //if (_suckPowerCanvas.activeSelf == false)
-            //    _suckPowerCanvas.SetActive(true);
             if (_arrow.gameObject.activeSelf == false)
             {
                 _arrow.gameObject.SetActive(true);
                 _arrow.transform.localScale = new Vector3(_arrowScale, _arrowScale, _arrowScale);
             }
             _building.CalculateSuckPower();
-            _arrow.SetArrowCount(_building._currentSuckIndex);
+            _arrow.SetArrowCount(_building._currentSuckIndex + 1);
             _suckPowerCanvas.transform.position = _building._ropeRender.GetMiddlePos() + Vector3.up * 0.35f;
             _arrow.transform.position = _building._ropeRender.GetMiddlePos();
             _arrow.transform.rotation = Quaternion.LookRotation((_building._ropeRender._p2.position - _building._ropeRender._p1.position).normalized);
             float deltaHeight = _building.ConnectedBuilding.transform.position.y - _building.transform.position.y;
-            //_suckPower.text = $"{deltaHeight.ToString("0.00")}";
-            //_suckPower.text = $"{deltaHeight.ToString("0.00")} \n {_building._pipeSuckPower.ToString("0.0")}";
             string gl = "";
             for (int i = 0; i < _building._currentSuckIndex + 1; i++)
                 gl += ">";
-            //_suckPower.text = $"{_building._pipeSuckPower.ToString("0.0")}";
             _suckPower.text = $"{gl}";
         }
         else
