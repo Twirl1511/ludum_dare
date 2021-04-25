@@ -38,7 +38,7 @@ public class BuildingController : MonoBehaviour
                 else
                 {
                     /// получаем позицию для строительства через платформу
-                    PositionToBuild positionToBuild = hit.collider.GetComponent<PositionToBuild>();
+                    PositionToBuild positionToBuild = hit.collider.GetComponentInParent<PositionToBuild>();
                     if (!positionToBuild.IsOcupied() && _isFoundStart && _canBuild)
                     {
                         _endPosition = positionToBuild.Position.position;

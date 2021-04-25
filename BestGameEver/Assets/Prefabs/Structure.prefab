@@ -191,8 +191,7 @@ GameObject:
   - component: {fileID: 2031223135864623671}
   - component: {fileID: 7687163372174287097}
   - component: {fileID: 1913643259377755525}
-  - component: {fileID: 7356773986793569854}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +578,7 @@ GameObject:
   - component: {fileID: 2012662165967164402}
   - component: {fileID: 4437877447348362693}
   - component: {fileID: 7863529156277815439}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: PopulationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099654535270563670}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: PipePos
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -787,6 +786,9 @@ GameObject:
   - component: {fileID: 3921263406065160153}
   - component: {fileID: 654818538589268316}
   m_Layer: 8
+  - component: {fileID: 4571763270889591816}
+  m_Layer: 10
+  m_Name: Population
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
