@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  moveDistance: 0.2
+  moveDistance: 0.5
   _fallCD:
   - Humans: 50
     CD: 25

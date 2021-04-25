@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 2031223135864623671}
   - component: {fileID: 7687163372174287097}
   - component: {fileID: 1913643259377755525}
+  - component: {fileID: 7356773986793569854}
   m_Layer: 10
   m_Name: Structure
   m_TagString: Untagged
@@ -289,24 +290,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 0}
   _production: 0
-  _productionIncrement: 1
+  _productionIncrementSpeed: 60
   _productionSpeed: 1
   ConnectedBuilding: {fileID: 0}
   PipePosition: {fileID: 2099654535270563670}
   _ropeRender: {fileID: 7507563641135761222}
   _platform: {fileID: 0}
   _maxMass: 500
+  BrokenPipe: 0
   _suckPower:
   - Height: -99999
-    SuckPower: 1
-  - Height: -0.5
     SuckPower: 2
-  - Height: 0
-    SuckPower: 3
-  - Height: 0.5
+  - Height: 0.05
     SuckPower: 4
-  - Height: 1
-    SuckPower: 5
+  _dropSpeed: []
   _currentSuckIndex: 0
   _pipeSuckPower: 0
 --- !u!114 &7507563641135761222
@@ -786,10 +783,7 @@ GameObject:
   - component: {fileID: 3921263406065160153}
   - component: {fileID: 654818538589268316}
   m_Layer: 8
-  - component: {fileID: 4571763270889591816}
-  m_Layer: 10
   m_Name: Population
-  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
