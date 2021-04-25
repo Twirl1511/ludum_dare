@@ -72,7 +72,7 @@ public class BuildingController : MonoBehaviour
         building._platform = platform.GetComponent<PlatformMove>();
         /// для отображения количества людей в здании
         building.GetComponent<ShowPopulation>()._platform = building._platform;
-        building._platform.InitFall();
+        //building._platform.InitFall();
         building.ConnectedBuilding = _baseBuilding;
         building._ropeRender.SetPos1(_baseBuilding.PipePosition);
         building._ropeRender.SetPos2(building.PipePosition);

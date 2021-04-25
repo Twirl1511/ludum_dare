@@ -4,15 +4,17 @@ public class Building : MonoBehaviour
 {
     [SerializeField] private MeshRenderer _renderer;
     [SerializeField] private int _production = 1;
-    [SerializeField] private int _productionIncrement = 1;
+    [SerializeField] private int _productionIncrementSpeed = 60;
     [SerializeField] private float _productionSpeed = 1;
     public Building ConnectedBuilding;
     public Transform PipePosition;
     public RopeRendering _ropeRender;
     public PlatformMove _platform;
     public int _maxMass = 500;
+    public bool BrokenPipe = false;
 
     [SerializeField] private Dependency[] _suckPower;
+    [SerializeField] private DependencyPipe[] _dropSpeed;
     [HideInInspector] public int _currentSuckIndex = 0;
     [HideInInspector] public float _pipeSuckPower = 0;
 
@@ -24,8 +26,8 @@ public class Building : MonoBehaviour
     {
         _renderer = GetComponent<MeshRenderer>();
         InvokeRepeating(nameof(Production), _productionSpeed, _productionSpeed);
-        InvokeRepeating(nameof(ProductionIncrement), 60f, 60f);
-        _platform.InitFall();
+        InvokeRepeating(nameof(ProductionIncrement), _productionIncrementSpeed, _productionIncrementSpeed);
+        //_platform.InitFall();
         CalculateSuckPower();
     }
 
@@ -39,24 +41,52 @@ public class Building : MonoBehaviour
 
     private void ProductionIncrement()
     {
-        _production += _productionIncrement;
+        _production += 1;
     }
 
     private void Production()
     {
         if (_platform != null && _production > 0)
             _platform.Mass += _production;
-        if (ConnectedBuilding != null && ConnectedBuilding._platform.Mass >= _pipeSuckPower)
-        {
-            ConnectedBuilding._platform.Mass -= _pipeSuckPower;
-            _platform.Mass += _pipeSuckPower;
-        }
+
+        CalculatePipe();
+        
         if (_platform.Mass > _maxMass)
         {
             Destroy(_platform.gameObject);
             Destroy(gameObject);
         }
         CalculateSuckPower();
+    }
+
+    private void CalculatePipe()
+    {
+        if (ConnectedBuilding != null && ConnectedBuilding._platform.Mass >= _pipeSuckPower)
+        {
+            ConnectedBuilding._platform.Mass -= _pipeSuckPower;
+            _platform.Mass += _pipeSuckPower;
+        }
+
+        if(BrokenPipe)
+        {
+            for (int i = 0; i < _dropSpeed.Length; i++)
+            {
+                if (_platform.Mass > _dropSpeed[i].Humans)
+                {
+                    if (i < _dropSpeed.Length - 1 && _platform.Mass < _dropSpeed[i + 1].Humans)
+                    {
+                        _pipeSuckPower = _dropSpeed[i].DropPerSec;
+                        _currentSuckIndex = i;
+                        break;
+                    }
+                    if (i == _dropSpeed.Length - 1)
+                    {
+                        _pipeSuckPower = _dropSpeed[i].DropPerSec;
+                        _currentSuckIndex = i;
+                    }
+                }
+            }
+        }
     }
 
     public void CalculateSuckPower()
@@ -83,17 +113,17 @@ public class Building : MonoBehaviour
         }
     }
 
-    //private float CalculateProduction()
-    //{
-    //    float result = (float)_production;
-    //    result = Mathf.Pow(_platform._mass * _productionSpeed * multiplyBy, powerBy);
-    //    return result;
-    //}
-
     [System.Serializable]
     public struct Dependency
     {
         public float Height;
         public float SuckPower;
+    }
+
+    [System.Serializable]
+    public struct DependencyPipe
+    {
+        public float Humans;
+        public float DropPerSec;
     }
 }

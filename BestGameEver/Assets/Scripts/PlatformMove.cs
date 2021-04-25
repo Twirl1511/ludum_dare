@@ -30,7 +30,8 @@ public class PlatformMove : MonoBehaviour
             _mass = value;
             if (_maxMass < _mass)
                 _maxMass = _mass;
-            SetNewCD();
+            UpdatePos();
+            //SetNewCD();
         }
     }
 
@@ -39,41 +40,41 @@ public class PlatformMove : MonoBehaviour
         _startPosition = transform.position;
     }
 
-    public void InitFall()
+    //public void InitFall()
+    //{
+    //    _startPosition = transform.position;
+    //    _deltaTimer = 0f;
+    //}
+
+    void UpdatePos()
     {
-        _startPosition = transform.position;
-        _deltaTimer = 0f;
+        //if (_deltaTimer >= 0f)
+        //{
+        //    _deltaTimer += Time.deltaTime;
+
+        //    if(_deltaTimer >= _cd)
+        //    {
+        float newY = _startPosition.y - ((int)_maxMass / (int)50) * moveDistance;
+        transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
+                //SetNewCD();
+                //_deltaTimer = 0f;
+        //    }
+        //}
     }
 
-    void Update()
-    {
-        if (_deltaTimer >= 0f)
-        {
-            _deltaTimer += Time.deltaTime;
-
-            if(_deltaTimer >= _cd)
-            {
-                float newY = _startPosition.y - (_maxMass / 50) * moveDistance;
-                transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
-                SetNewCD();
-                _deltaTimer = 0f;
-            }
-        }
-    }
-
-    private void SetNewCD()
-    {
-        for(int i = 0; i < _fallCD.Length; i++)
-        {
-            if (_mass > _fallCD[i].Humans)
-                continue;
-            if (_mass < _fallCD[i].Humans)
-            {
-                _cd = _fallCD[i].CD;
-                break;
-            }
-        }
-    }
+    //private void SetNewCD()
+    //{
+    //    for(int i = 0; i < _fallCD.Length; i++)
+    //    {
+    //        if (_mass > _fallCD[i].Humans)
+    //            continue;
+    //        if (_mass < _fallCD[i].Humans)
+    //        {
+    //            _cd = _fallCD[i].CD;
+    //            break;
+    //        }
+    //    }
+    //}
 
     [System.Serializable]
     public struct Dependency
