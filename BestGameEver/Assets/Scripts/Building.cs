@@ -12,6 +12,8 @@ public class Building : MonoBehaviour
     public PlatformMove _platform;
     public int _maxMass = 500;
     public bool BrokenPipe = false;
+    public bool HasPipe = true;
+    public Transform[] PipeInputs;
 
     [SerializeField] private Dependency[] _suckPower;
     [SerializeField] private DependencyPipe[] _dropSpeed;
