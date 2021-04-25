@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Population : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public PlatformMove[] Platforms;
+    public float TotalMass;
+    public Text TotalPopulationText;
+    public Text TotalDeathText;
+
     void Start()
     {
         
@@ -13,7 +17,13 @@ public class Population : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        TotalMass = 0;
+        foreach (var platform in Platforms)
+        {
+            TotalMass += platform.Mass;
+        }
+        TotalPopulationText.text = TotalMass.ToString("0");
+        //TotalDeathText.text = 
     }
 
 }

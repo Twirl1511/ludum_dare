@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9119689225925239335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -345,7 +345,7 @@ MonoBehaviour:
   _renderer: {fileID: 0}
   _production: 0
   _productionIncrementSpeed: 60
-  _productionSpeed: 1
+  _productionSpeed: 0
   ConnectedBuilding: {fileID: 0}
   PipePosition: {fileID: 2099654535270563670}
   _ropeRender: {fileID: 7507563641135761222}

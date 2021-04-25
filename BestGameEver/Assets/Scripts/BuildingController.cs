@@ -5,6 +5,7 @@ public class BuildingController : MonoBehaviour
     public static BuildingController singleton;
     public float RayLength;
     public float _ropeLength;
+    public float minusLength;
     private bool _isFoundStart;
     public LayerMask LayerMask;
     private Vector3 _endPosition;
@@ -60,7 +61,7 @@ public class BuildingController : MonoBehaviour
                         HiglightPositionOff();
                         _endPosition = positionToBuild.Position.position;
                         float distanse = Vector3.Distance(_startPosition, _endPosition);
-                        if (distanse <= _ropeLength)
+                        if (distanse <= _ropeLength - minusLength)
                         {
                             Vector3 position = positionToBuild.Position.position;
                             BuildStructure(position, positionToBuild);
