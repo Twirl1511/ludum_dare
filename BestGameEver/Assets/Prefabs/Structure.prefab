@@ -362,9 +362,9 @@ MonoBehaviour:
   - Height: -99999
     SuckPower: 2
   - Height: 0.05
+    SuckPower: 3
+  - Height: 2
     SuckPower: 4
-  - Height: 1
-    SuckPower: 5
   _dropSpeed:
   - Humans: 1
     DropPerSec: 0
@@ -379,6 +379,7 @@ MonoBehaviour:
   - Humans: 99999
     DropPerSec: 10
   _currentSuckIndex: 0
+  _suckArrows: 0
   _pipeSuckPower: 0
 --- !u!114 &7507563641135761222
 MonoBehaviour:
