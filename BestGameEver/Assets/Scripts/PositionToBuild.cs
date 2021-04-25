@@ -7,10 +7,11 @@ public class PositionToBuild : MonoBehaviour
     public Transform Position;
     public Building building;
     [SerializeField] private bool _isOcupied;
-    public GameObject SphereCollider;
+    public GameObject ColliderToHihlightPositionToBuild;
+    public GameObject PositionToBuildObject;
     private void Start()
     {
-        SphereCollider.SetActive(false);
+        ColliderToHihlightPositionToBuild.SetActive(false);
     }
     public bool IsOcupied()
     {
@@ -19,6 +20,7 @@ public class PositionToBuild : MonoBehaviour
     public void SetIsOcupied(bool flag)
     {
         _isOcupied = flag;
+        PositionToBuildObject.SetActive(!flag);
     }
 
 

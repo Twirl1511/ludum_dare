@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4916486273592392398}
   - component: {fileID: 37776165652992447}
   m_Layer: 2
-  m_Name: trigerTest
+  m_Name: ColliderToHighligh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,8 @@ MonoBehaviour:
   Position: {fileID: 6676794214931636107}
   building: {fileID: 0}
   _isOcupied: 0
-  SphereCollider: {fileID: 4495408169410146159}
+  ColliderToHihlightPositionToBuild: {fileID: 4495408169410146159}
+  PositionToBuildObject: {fileID: 7351381000804075875}
 --- !u!1 &7351381000804075875
 GameObject:
   m_ObjectHideFlags: 0

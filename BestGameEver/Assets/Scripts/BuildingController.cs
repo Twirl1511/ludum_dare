@@ -40,7 +40,7 @@ public class BuildingController : MonoBehaviour
                     _baseBuilding = positionToBuild.building;
                     _baseBuilding.Highlight(true);
                     /// подстветка клеток где можно строить
-                    HiglightPosition(positionToBuild);
+                    HiglightPositionOn(positionToBuild);
                 }
                 else
                 {
@@ -50,7 +50,7 @@ public class BuildingController : MonoBehaviour
                     {
                         /// отключаем подстветку клеток где можно строить
                         HiglightPositionOff();
-                        test = null;
+                        highlightPosition = null;
 
                         _endPosition = positionToBuild.Position.position;
                         float distanse = Vector3.Distance(_startPosition, _endPosition);
@@ -93,14 +93,14 @@ public class BuildingController : MonoBehaviour
         building._ropeRender.SetActive(true);
     }
 
-    private void HiglightPosition(PositionToBuild from)
+    private void HiglightPositionOn(PositionToBuild from)
     {
-        test = from;
-        from.SphereCollider.SetActive(true);
+        highlightPosition = from;
+        from.ColliderToHihlightPositionToBuild.SetActive(true);
     }
-    private PositionToBuild test;
+    private PositionToBuild highlightPosition;
     private void HiglightPositionOff()
     {
-        test.SphereCollider.GetComponent<HiglightPositionsToBuild>().HiglightOff();
+        highlightPosition.ColliderToHihlightPositionToBuild.GetComponent<HiglightPositionsToBuild>().HiglightOff();
     }
 }
