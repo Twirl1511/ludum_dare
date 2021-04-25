@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Transparent : MonoBehaviour
 {
+    [SerializeField] private Material standartMaterial;
+    [SerializeField] private Material transparentMaterial;
+
     private Color _platformColor;
     private Color _platformColorTransparent;
     private Color _platformColorDefault;
@@ -21,11 +24,13 @@ public class Transparent : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        renderer.material.SetColor("_Color", _platformColorTransparent);
+        renderer.material = transparentMaterial;
+        //renderer.material.SetColor("_Color", _platformColorTransparent);
     }
     private void OnMouseExit()
     {
-        renderer.material.SetColor("_Color", _platformColorDefault);
+        renderer.material = standartMaterial;
+        //renderer.material.SetColor("_Color", _platformColorDefault);
     }
 }
 

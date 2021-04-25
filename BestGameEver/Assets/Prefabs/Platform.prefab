@@ -20,11 +20,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782639406602235312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f237215ff3f05a146b0d826e1f5a4542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standartMaterial: {fileID: 2100000, guid: 4248a1b5c33b3fa40a590f6aaa7006b2, type: 2}
+  transparentMaterial: {fileID: 2100000, guid: 223ebe4d19bb378479b2ac0b3847b4d0, type: 2}
 --- !u!1 &4495408169410146159
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,7 +70,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.8
+  m_Radius: 1.7
   m_Center: {x: 0, y: -2.16, z: 0}
 --- !u!114 &37776165652992447
 MonoBehaviour:
@@ -278,6 +280,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7255956016137122564}
     m_Modifications:
+    - target: {fileID: 5750222041890737009, guid: 1d0888a8511f4ad49ae6e281d9eff704,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750222041890737009, guid: 1d0888a8511f4ad49ae6e281d9eff704,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 223ebe4d19bb378479b2ac0b3847b4d0, type: 2}
     - target: {fileID: 6110285230431234724, guid: 1d0888a8511f4ad49ae6e281d9eff704,
         type: 3}
       propertyPath: m_Name
