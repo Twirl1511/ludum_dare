@@ -47,12 +47,11 @@ public class PlatformMove : MonoBehaviour
 
             if(_deltaTimer >= _cd)
             {
-                float sign = Mathf.Sign(_mass - _prevMass);
-                float deltaMassAbs = Mathf.Abs(_mass - _prevMass);
+                float deltaMassAbs = _mass - _prevMass;
                 if (deltaMassAbs >= 10)
                 {
                     _prevMass = _mass;
-                    float newY = transform.position.y - moveDistance * sign;
+                    float newY = transform.position.y - moveDistance;
                     transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
                     SetNewCD();
                 }
