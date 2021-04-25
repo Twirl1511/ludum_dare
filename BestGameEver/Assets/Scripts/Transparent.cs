@@ -24,12 +24,14 @@ public class Transparent : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        renderer.material = transparentMaterial;
+        if(enabled)
+            renderer.material = transparentMaterial;
         //renderer.material.SetColor("_Color", _platformColorTransparent);
     }
     private void OnMouseExit()
     {
-        renderer.material = standartMaterial;
+        if(enabled)
+            renderer.material = standartMaterial;
         //renderer.material.SetColor("_Color", _platformColorDefault);
     }
 }
