@@ -41,6 +41,11 @@ public class RopeRendering : MonoBehaviour
         _line.positionCount = pointCount;
     }
 
+    public Vector3 GetMiddlePos()
+    {
+        return _line.GetPosition(_line.positionCount / 2);
+    }
+
     private void Update()
     {
         if (_p1 != null)
