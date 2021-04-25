@@ -22,35 +22,43 @@ public class BuildingController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, RayLength, LayerMask))
             {
-                PositionToBuild platform = hit.collider.GetComponent<PositionToBuild>();
-                if (platform.IsOcupied())
+                if (hit.collider.TryGetComponent<Building>(out Building building))
                 {
-                    _startPosition = platform.Position.position;
+                    /// получаем позицию для строительства через домик
+                    PositionToBuild positionToBuild = building._platform.GetComponent<PositionToBuild>();
+                    _startPosition = positionToBuild.Position.position;
                     _isFoundStart = true;
-                    if(_baseBuilding != null)
+                    if (_baseBuilding != null)
+                    {
                         _baseBuilding.Highlight(false);
-                    _baseBuilding = platform.building;
+                    }
+                    _baseBuilding = positionToBuild.building;
                     _baseBuilding.Highlight(true);
                 }
-                if (!platform.IsOcupied() && _isFoundStart && _canBuild)
+                else
                 {
-                    _endPosition = platform.Position.position;
-                    float distanse = Vector3.Distance(_startPosition, _endPosition);
-                    if (distanse <= _ropeLength)
+                    /// получаем позицию для строительства через платформу
+                    PositionToBuild positionToBuild = hit.collider.GetComponent<PositionToBuild>();
+                    if (!positionToBuild.IsOcupied() && _isFoundStart && _canBuild)
                     {
-                        Vector3 position = platform.Position.position;
-                        BuildStructure(position, platform);
-                        platform.SetIsOcupied(true);
-                        _isFoundStart = false;
-                        _canBuild = false;
-                        Invoke(nameof(SetCanBuild), _buildCD);
+                        _endPosition = positionToBuild.Position.position;
+                        float distanse = Vector3.Distance(_startPosition, _endPosition);
+                        if (distanse <= _ropeLength)
+                        {
+                            Vector3 position = positionToBuild.Position.position;
+                            BuildStructure(position, positionToBuild);
+                            positionToBuild.SetIsOcupied(true);
+                            _isFoundStart = false;
+                            _canBuild = false;
+                            Invoke(nameof(SetCanBuild), _buildCD);
+                        }
+                        else
+                        {
+                            _isFoundStart = false;
+                        }
+                        _baseBuilding.Highlight(false);
                     }
-                    else
-                    {
-                        _isFoundStart = false;
-                    }
-                    _baseBuilding.Highlight(false);
-                }
+                } 
             }
         }
     }

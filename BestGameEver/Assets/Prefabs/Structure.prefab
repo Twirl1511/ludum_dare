@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3263554883411907951}
   - component: {fileID: 1866272391499380699}
   - component: {fileID: 6596524324363468959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 2031223135864623671}
   - component: {fileID: 7687163372174287097}
   - component: {fileID: 1913643259377755525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,8 +194,8 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2483030537411642964}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 2012662165967164402}
   - component: {fileID: 4437877447348362693}
   - component: {fileID: 7863529156277815439}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PopulationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2099654535270563670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PipePos
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 3921263406065160153}
   - component: {fileID: 654818538589268316}
   - component: {fileID: 4571763270889591816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Population
   m_TagString: Untagged
   m_Icon: {fileID: 0}
