@@ -31,93 +31,52 @@ public class BuildingController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, RayLength, LayerMask))
             {
                 if (hit.collider.TryGetComponent<Building>(out Building building))
-
                 {
-
                     /// получаем позицию для строительства через домик
-
                     PositionToBuild positionToBuild = building._platform.GetComponent<PositionToBuild>();
-
                     _startPosition = positionToBuild.Position.position;
-
                     _isFoundStart = true;
-
                     if (_baseBuilding != null)
-
                     {
-
                         _baseBuilding.Highlight(false);
-
                     }
-
                     _baseBuilding = positionToBuild.building;
-
                     _baseBuilding.Highlight(true);
-
                     /// подстветка клеток где можно строить
-
-                    HiglightPositionOn(positionToBuild);
-
-                }
-
-                else
-
-                {
-
-                    /// получаем позицию для строительства через платформу
-
-                    PositionToBuild positionToBuild = hit.collider.GetComponentInParent<PositionToBuild>();
-
-                    if (!positionToBuild.IsOcupied() && _isFoundStart && _canBuild)
-
+                    if(highlightPosition != null)
                     {
-
+                        if(positionToBuild != highlightPosition)
+                            HiglightPositionOff();
+                    }
+                    HiglightPositionOn(positionToBuild);
+                }
+                else
+                {
+                    /// получаем позицию для строительства через платформу
+                    PositionToBuild positionToBuild = hit.collider.GetComponentInParent<PositionToBuild>();
+                    if (!positionToBuild.IsOcupied() && _isFoundStart && _canBuild)
+                    {
                         /// отключаем подстветку клеток где можно строить
-
                         HiglightPositionOff();
-
-                        highlightPosition = null;
-
-
-
                         _endPosition = positionToBuild.Position.position;
-
                         float distanse = Vector3.Distance(_startPosition, _endPosition);
-
                         if (distanse <= _ropeLength)
-
                         {
-
                             Vector3 position = positionToBuild.Position.position;
-
                             BuildStructure(position, positionToBuild);
-
                             positionToBuild.SetIsOcupied(true);
-
                             _isFoundStart = false;
-
                             _canBuild = false;
-
                             Invoke(nameof(SetCanBuild), _buildCD);
-
                         }
-
                         else
 
                         {
-
                             _isFoundStart = false;
 
                         }
-
                         _baseBuilding.Highlight(false);
-
-                        
-
-                        
-
                     }
-
                 } 
             }
         }
@@ -144,21 +103,17 @@ public class BuildingController : MonoBehaviour
         building._ropeRender.SetActive(true);
     }
 
-    private void HiglightPositionOn(PositionToBuild from)
 
-    {
-
-        highlightPosition = from;
-
-        from.ColliderToHihlightPositionToBuild.SetActive(true);
-
-    }
     private PositionToBuild highlightPosition;
-    private void HiglightPositionOff()
-
+    private void HiglightPositionOn(PositionToBuild from)
     {
-
+        highlightPosition = from;
+        from.ColliderToHihlightPositionToBuild.SetActive(true);
+    }
+    
+    private void HiglightPositionOff()
+    {
         highlightPosition.ColliderToHihlightPositionToBuild.GetComponent<HiglightPositionsToBuild>().HiglightOff();
-
+        highlightPosition = null;
     }
 }
