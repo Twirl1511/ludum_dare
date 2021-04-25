@@ -2,6 +2,7 @@
 
 public class BuildingController : MonoBehaviour
 {
+    public static BuildingController singleton;
     public float RayLength;
     public float _ropeLength;
     private bool _isFoundStart;
@@ -13,6 +14,10 @@ public class BuildingController : MonoBehaviour
     [SerializeField] private float _buildCD = 2f;
     private bool _canBuild = true;
 
+    private void Awake()
+    {
+        singleton = this;
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -34,6 +39,8 @@ public class BuildingController : MonoBehaviour
                     }
                     _baseBuilding = positionToBuild.building;
                     _baseBuilding.Highlight(true);
+                    /// подстветка клеток где можно строить
+                    HiglightPosition(positionToBuild);
                 }
                 else
                 {
@@ -41,6 +48,10 @@ public class BuildingController : MonoBehaviour
                     PositionToBuild positionToBuild = hit.collider.GetComponentInParent<PositionToBuild>();
                     if (!positionToBuild.IsOcupied() && _isFoundStart && _canBuild)
                     {
+                        /// отключаем подстветку клеток где можно строить
+                        HiglightPositionOff();
+                        test = null;
+
                         _endPosition = positionToBuild.Position.position;
                         float distanse = Vector3.Distance(_startPosition, _endPosition);
                         if (distanse <= _ropeLength)
@@ -57,6 +68,8 @@ public class BuildingController : MonoBehaviour
                             _isFoundStart = false;
                         }
                         _baseBuilding.Highlight(false);
+                        
+                        
                     }
                 } 
             }
@@ -78,5 +91,16 @@ public class BuildingController : MonoBehaviour
         building._ropeRender.SetPos2(building.PipePosition);
         building._ropeRender.Init();
         building._ropeRender.SetActive(true);
+    }
+
+    private void HiglightPosition(PositionToBuild from)
+    {
+        test = from;
+        from.SphereCollider.SetActive(true);
+    }
+    private PositionToBuild test;
+    private void HiglightPositionOff()
+    {
+        test.SphereCollider.GetComponent<HiglightPositionsToBuild>().HiglightOff();
     }
 }
