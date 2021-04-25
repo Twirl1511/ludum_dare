@@ -4,16 +4,43 @@ public class RopeRendering : MonoBehaviour
 {
     private LineRenderer _line;
     [SerializeField] private AnimationCurve _curve;
-    [SerializeField] private Transform _p1;
-    [SerializeField] private Transform _p2;
+    [SerializeField] public Transform _p1;
+    [SerializeField] public Transform _p2;
     [SerializeField] private float _pointStep = 0.2f;
     [SerializeField] private float _tension = 1f;
 
     [HideInInspector] public float _length;
+    [HideInInspector] public Building _building;
     private Vector3 basePos;
     private Vector3 endPos;
     private Vector3 direction;
     private bool _broken;
+
+    public void SetRopeBase(Building target)
+    {
+        Transform t = _building.PipeInputs[0];
+        foreach(Transform p in _building.PipeInputs)
+        {
+            if((target.transform.position - p.position).magnitude < (target.transform.position - t.position).magnitude)
+            {
+                t = p;
+            }
+        }
+        _p2.position = t.position;
+        _p2.parent = t;
+
+        t = target.PipeInputs[0];
+        foreach (Transform p in target.PipeInputs)
+        {
+            if ((_p1.parent.position - p.position).magnitude < (_p1.parent.position - t.position).magnitude)
+            {
+                t = p;
+            }
+        }
+
+        _p1.position = t.position;
+        _p1.parent = t.transform;
+    }
 
     public void SetPos1(Transform target)
     {
@@ -28,6 +55,7 @@ public class RopeRendering : MonoBehaviour
 
     private void Start()
     {
+        _building = GetComponent<Building>();
         _line = GetComponent<LineRenderer>();
         _line.positionCount = 0;
     }
@@ -40,6 +68,9 @@ public class RopeRendering : MonoBehaviour
     public void BrokePipe()
     {
         _broken = true;
+        _p2.parent = transform;
+        _p2.GetComponent<Collider>().enabled = true;
+        _p2.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     public void Init()
@@ -62,14 +93,14 @@ public class RopeRendering : MonoBehaviour
 
     private void Update()
     {
-        if (_p1 != null)
+        if (_building.HasPipe)
         {
-            if (_broken)
+            if (false)
             {
                 Init();
                 for (int i = 0; i < _line.positionCount; i++)
                 {
-                    _line.SetPosition(i, (basePos + direction * i * _pointStep) + Vector3.down * _tension * (_curve.Evaluate((i * _pointStep) / _length)));
+                    _line.SetPosition(i, (basePos + direction * i * _pointStep));
                 }
                 _line.SetPosition(0, basePos);
                 _line.SetPosition(_line.positionCount - 1, endPos);

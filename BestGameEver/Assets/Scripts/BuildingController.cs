@@ -74,8 +74,12 @@ public class BuildingController : MonoBehaviour
         building.GetComponent<ShowPopulation>()._platform = building._platform;
         //building._platform.InitFall();
         building.ConnectedBuilding = _baseBuilding;
-        building._ropeRender.SetPos1(_baseBuilding.PipePosition);
-        building._ropeRender.SetPos2(building.PipePosition);
+        building._ropeRender._building = building;
+        building._ropeRender.SetRopeBase(_baseBuilding);
+
+        //building._ropeRender.SetPos1(_baseBuilding.PipePosition);
+        //building._ropeRender.SetPos2(building.PipePosition);
+
         building._ropeRender.Init();
         building._ropeRender.SetActive(true);
     }
