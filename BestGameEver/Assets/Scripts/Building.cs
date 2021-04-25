@@ -69,23 +69,18 @@ public class Building : MonoBehaviour
 
         if(BrokenPipe)
         {
+            float drops = 0f;
             for (int i = 0; i < _dropSpeed.Length; i++)
             {
-                if (_platform.Mass > _dropSpeed[i].Humans)
+                if (_platform.Mass < _dropSpeed[i].Humans)
                 {
-                    if (i < _dropSpeed.Length - 1 && _platform.Mass < _dropSpeed[i + 1].Humans)
-                    {
-                        _pipeSuckPower = _dropSpeed[i].DropPerSec;
-                        _currentSuckIndex = i;
-                        break;
-                    }
-                    if (i == _dropSpeed.Length - 1)
-                    {
-                        _pipeSuckPower = _dropSpeed[i].DropPerSec;
-                        _currentSuckIndex = i;
-                    }
+                    drops = _dropSpeed[i].DropPerSec;
+                    break;
                 }
             }
+            _platform.Mass -= drops;
+            if (_platform.Mass < 0f)
+                _platform.Mass = 0f;
         }
     }
 

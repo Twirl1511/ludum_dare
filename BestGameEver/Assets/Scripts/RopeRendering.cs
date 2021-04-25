@@ -4,8 +4,8 @@ public class RopeRendering : MonoBehaviour
 {
     private LineRenderer _line;
     [SerializeField] private AnimationCurve _curve;
-    private Transform _p1;
-    private Transform _p2;
+    [SerializeField] private Transform _p1;
+    [SerializeField] private Transform _p2;
     [SerializeField] private float _pointStep = 0.2f;
     [SerializeField] private float _tension = 1f;
 
@@ -13,9 +13,18 @@ public class RopeRendering : MonoBehaviour
     private Vector3 basePos;
     private Vector3 endPos;
     private Vector3 direction;
+    private bool _broken;
 
-    public void SetPos1(Transform target) => _p1 = target;
-    public void SetPos2(Transform target) => _p2 = target;
+    public void SetPos1(Transform target)
+    {
+        _p1.position = target.position;
+        _p1.parent = target;
+    }
+    public void SetPos2(Transform target)
+    {
+        _p2.position = target.position;
+        _p2.parent = target;
+    }
 
     private void Start()
     {
@@ -26,6 +35,11 @@ public class RopeRendering : MonoBehaviour
     public void SetActive(bool active)
     {
         _line.enabled = active;
+    }
+
+    public void BrokePipe()
+    {
+        _broken = true;
     }
 
     public void Init()
@@ -44,19 +58,32 @@ public class RopeRendering : MonoBehaviour
     public Vector3 GetMiddlePos()
     {
         return _line.GetPosition(_line.positionCount / 2 + 1);
-    }
+    } 
 
     private void Update()
     {
         if (_p1 != null)
         {
-            Init();
-            for (int i = 0; i < _line.positionCount; i++)
+            if (_broken)
             {
-                _line.SetPosition(i, (basePos + direction * i * _pointStep) + Vector3.down * _tension * (_curve.Evaluate((i * _pointStep) / _length)));
+                Init();
+                for (int i = 0; i < _line.positionCount; i++)
+                {
+                    _line.SetPosition(i, (basePos + direction * i * _pointStep) + Vector3.down * _tension * (_curve.Evaluate((i * _pointStep) / _length)));
+                }
+                _line.SetPosition(0, basePos);
+                _line.SetPosition(_line.positionCount - 1, endPos);
             }
-            _line.SetPosition(0, basePos);
-            _line.SetPosition(_line.positionCount - 1, endPos);
+            else
+            {
+                Init();
+                for (int i = 0; i < _line.positionCount; i++)
+                {
+                    _line.SetPosition(i, (basePos + direction * i * _pointStep) + Vector3.down * _tension * (_curve.Evaluate((i * _pointStep) / _length)));
+                }
+                _line.SetPosition(0, basePos);
+                _line.SetPosition(_line.positionCount - 1, endPos);
+            }
         }
     }
 }

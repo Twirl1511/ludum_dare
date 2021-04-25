@@ -17,6 +17,7 @@ public class Rope : MonoBehaviour
         {
             renderer.SetActive(false);
             building.ConnectedBuilding = null;
+            building.BrokenPipe = true;
         }
     }
 }
