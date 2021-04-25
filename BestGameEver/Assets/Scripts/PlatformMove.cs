@@ -5,7 +5,6 @@ using DG.Tweening;
 public class PlatformMove : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
-    //[SerializeField] private float updateSpeed = 10f;
     [SerializeField] private float moveDistance = 10f;
 
     [SerializeField] private Dependency[] _fallCD;
@@ -16,7 +15,9 @@ public class PlatformMove : MonoBehaviour
     // Mass = 2   |   Height = -0.2
     // Mass = 10   |   Height = -1.0
 
-    private float _prevMass = 0f;
+    private Vector3 _startPosition;
+
+    private float _maxMass = 0f;
     private float _mass = 0f;
     public float Mass
     {
@@ -27,16 +28,21 @@ public class PlatformMove : MonoBehaviour
         set
         {
             _mass = value;
+            if (_maxMass < _mass)
+                _maxMass = _mass;
             SetNewCD();
         }
     }
-    private Vector3 _startPosition;
+
+    private void Start()
+    {
+        _startPosition = transform.position;
+    }
 
     public void InitFall()
     {
         _startPosition = transform.position;
         _deltaTimer = 0f;
-        //StartCoroutine(MoveDown());
     }
 
     void Update()
@@ -47,33 +53,11 @@ public class PlatformMove : MonoBehaviour
 
             if(_deltaTimer >= _cd)
             {
-                float deltaMassAbs = _mass - _prevMass;
-                if (deltaMassAbs >= 10)
-                {
-                    _prevMass = _mass;
-                    float newY = transform.position.y - moveDistance;
-                    transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
-                    SetNewCD();
-                }
+                float newY = _startPosition.y - (_maxMass / 50) * moveDistance;
+                transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
+                SetNewCD();
                 _deltaTimer = 0f;
             }
-        }
-    }
-
-    public IEnumerator MoveDown()
-    {
-        while (true)
-        {
-            //_deltaTimer = 0f;
-            yield return new WaitForSeconds(_cd);
-            //float deltaMass = Mathf.Abs(_mass - _prevMass);
-            //if (deltaMass >= 10)
-            //{
-            //    _prevMass = _mass;
-            //    float newY = _startPosition.y - moveDistance;
-            //    transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
-            //    SetNewCD();
-            //}
         }
     }
 
