@@ -1891,7 +1891,7 @@ MonoBehaviour:
   TotalMass: 0
   TotalPopulationText: {fileID: 180071687}
   TotalDeathText: {fileID: 334550708}
-  PopulationToWin: 1000
+  PopulationToWin: 2200
   DeathToLoose: 100
   _creditsPanel: {fileID: 607884402}
   _exitButton: {fileID: 258832796}
@@ -7881,7 +7881,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bbcb5077177104c939a953e51f3e3d92, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.33
+  m_Volume: 0.122
   m_Pitch: 1
   Loop: 1
   Mute: 0
