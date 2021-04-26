@@ -86,9 +86,8 @@ public class Rope : MonoBehaviour
                 }
             }
         }
-        if (renderer._length > _ropeLength - 0.2f)
+        if (_renderer._length > _ropeLength - 0.2f)
         {
-            print("tension sound");
             AudioController.singleton.PlayPipeTensionSound();
         }
 
@@ -118,6 +117,9 @@ public class Rope : MonoBehaviour
             //счетчик смертей
             //DeathCounter += drops;
             OnHumanDrops?.Invoke(drops);
+
+            AudioController.singleton.PlayPipeTensionSoundONN();
+            AudioController.singleton.PlayScreamSound();
 
             buildingFrom._platform.Mass -= drops;
             if (buildingFrom._platform.Mass < 0f)

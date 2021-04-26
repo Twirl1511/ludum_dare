@@ -15,16 +15,16 @@ public class ShowSuckPower : MonoBehaviour
     {
         if (_rope.buildingFrom != null && _rope.buildingTo != null)
         {
-            if (_arrow.gameObject.activeSelf == false)
-            {
-                _arrow.gameObject.SetActive(true);
-                _arrow.transform.localScale = new Vector3(_arrowScale, _arrowScale, _arrowScale);
-            }
+            //if (_arrow.gameObject.activeSelf == false)
+            //{
+            //    _arrow.gameObject.SetActive(true);
+            //    _arrow.transform.localScale = new Vector3(_arrowScale, _arrowScale, _arrowScale);
+            //}
             _rope.CalculateSuckPower();
-            _arrow.SetArrowCount(_rope._currentSuckIndex + 1);
+            //_arrow.SetArrowCount(_rope._currentSuckIndex + 1);
             _suckPowerCanvas.transform.position = _rope._renderer.GetMiddlePos() + Vector3.up * 0.35f;
-            _arrow.transform.position = _rope._renderer.GetMiddlePos();
-            _arrow.transform.rotation = Quaternion.LookRotation((_rope.buildingTo.transform.position - _rope.buildingFrom.transform.position).normalized);
+            //_arrow.transform.position = _rope._renderer.GetMiddlePos();
+            //_arrow.transform.rotation = Quaternion.LookRotation((_rope.buildingTo.transform.position - _rope.buildingFrom.transform.position).normalized);
             float deltaHeight = _rope.buildingFrom.transform.position.y - _rope.buildingTo.transform.position.y;
             string gl = "";
             for (int i = 0; i < _rope._currentSuckIndex + 1; i++)

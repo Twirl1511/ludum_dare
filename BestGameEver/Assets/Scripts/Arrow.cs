@@ -8,14 +8,14 @@ public class Arrow : MonoBehaviour
 
     public void SetArrowCount(int amount)
     {
-        if(amount > 0)
-        {
-            for(int i = 0; i < Arrows.Length; i++)
-            {
-                Arrows[i].gameObject.SetActive(false);
-                if(i < amount)
-                    Arrows[i].gameObject.SetActive(true);
-            }
-        }
+        //if(amount > 0)
+        //{
+        //    for(int i = 0; i < Arrows.Length; i++)
+        //    {
+        //        Arrows[i].gameObject.SetActive(false);
+        //        if(i < amount)
+        //            Arrows[i].gameObject.SetActive(true);
+        //    }
+        //}
     }
 }
