@@ -88,6 +88,7 @@ public class BuildingController : MonoBehaviour
     private void BuildStructure(Vector3 position, PositionToBuild platform)
     {
         Building building = Instantiate(_prefabStructure, position, Quaternion.identity, platform.transform);
+        AudioController.singleton.PlayBuildSound();
         platform.building = building;
         building._platform = platform.GetComponent<PlatformMove>();
         /// для отображения количества людей в здании
