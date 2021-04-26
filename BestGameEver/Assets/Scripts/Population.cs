@@ -19,6 +19,13 @@ public class Population : MonoBehaviour
 
     [SerializeField] private GameObject _loosePanel;
 
+    public static Population Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         InvokeRepeating(nameof(ShowPopulation), 1, 1);    
@@ -44,12 +51,15 @@ public class Population : MonoBehaviour
         }
         if (Building.DeathCounter >= DeathToLoose)
         {
-            _loosePanel.SetActive(true);
-            Building.DeathCounter = 0;
-            Pause.State = Pause.States.Pause;
+            Lose();
         }
         
 
     }
 
+    public void Lose()
+    {
+        _loosePanel.SetActive(true);
+        Pause.State = Pause.States.Pause;
+    }
 }

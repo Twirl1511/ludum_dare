@@ -493,6 +493,7 @@ MonoBehaviour:
   - {fileID: 3427889427421389364}
   - {fileID: 2318787231045923238}
   - {fileID: 2456057727781012096}
+  mainBase: 0
   pipes: []
 --- !u!114 &1913643259377755525
 MonoBehaviour:

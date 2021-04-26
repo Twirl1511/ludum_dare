@@ -18,21 +18,22 @@ public class RopeRendering : MonoBehaviour
     private LineRenderer _line;
     private bool _broken;
 
+    public bool draaaw;
     public Building buildingFrom;
     public Building buildingTo;
 
     public Vector3 GetMiddlePos() => _line.GetPosition(_line.positionCount / 2 + 1);
 
-    public void SetPos1(Transform target)
-    {
-        _p1.position = target.position;
-        _p1.parent = target;
-    }
-    public void SetPos2(Transform target)
-    {
-        _p2.position = target.position;
-        _p2.parent = target;
-    }
+    //public void SetPos1(Transform target)
+    //{
+    //    _p1.position = target.position;
+    //    _p1.parent = target;
+    //}
+    //public void SetPos2(Transform target)
+    //{
+    //    _p2.position = target.position;
+    //    _p2.parent = target;
+    //}
 
     private void Start()
     {
@@ -47,21 +48,24 @@ public class RopeRendering : MonoBehaviour
 
     public void BrokePipe(Building from)
     {
+        Init(buildingFrom, buildingTo);
+        //Reinit();
         buildingFrom = from;
         buildingTo = null;
 
+
         _broken = true;
-        _p1.parent = _p2;
         _p1.position = GetMiddlePos();
+        _p1.parent = _p2;
+        
         Quaternion rot = Quaternion.LookRotation((_p2.position - _p1.position).normalized);
         _p1.rotation = rot;
         _humanParticles.transform.position = _p1.position;
         _humanParticles.transform.parent = _p1;
         _humanParticles.Play();
-
-        _pipeConnect.gameObject.SetActive(true);
-        _pipeConnect.transform.position = _p1.position;
-        _pipeConnect.transform.parent = _p1;
+        //_pipeConnect.gameObject.SetActive(true);
+        //_pipeConnect.transform.position = _p1.position;
+        //_pipeConnect.transform.parent = _p1;
     }
 
     public void Init(Building from, Building to)
@@ -85,6 +89,12 @@ public class RopeRendering : MonoBehaviour
         direction.Normalize();
         int pointCount = (int)(_length / _pointStep);
         _line.positionCount = pointCount;
+        if (Input.GetKey(KeyCode.E) && draaaw)
+        {
+            print(_line.positionCount);
+            print($"{_p2.position}  +  {_p1.position}  +  {direction}");
+
+        }
     }
 
     private void SetRopeBase()
