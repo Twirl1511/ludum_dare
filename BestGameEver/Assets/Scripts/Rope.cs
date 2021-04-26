@@ -4,6 +4,7 @@ public class Rope : MonoBehaviour
 {
     public Building buildingFrom;
     public Building buildingTo;
+    public Building buildingToPrev;
     public float _ropeLength;
     public bool BrokenPipe = false;
     [HideInInspector] public RopeRendering _renderer;
@@ -15,12 +16,10 @@ public class Rope : MonoBehaviour
     [SerializeField] private Dependency[] _suckPower;
     [SerializeField] private DependencyPipe[] _dropSpeed;
 
-
-    public static event System.Action<float> OnHumanDrops;
-
     public void Init(Building from, Building to)
     {
         buildingFrom = from;
+        buildingToPrev = buildingTo;
         buildingTo = to;
         _renderer = GetComponent<RopeRendering>();
         _renderer.Init(from, to);
@@ -29,9 +28,12 @@ public class Rope : MonoBehaviour
         CalculateSuckPower();
     }
 
-    public void RepairPipe()
+    public void RepairPipe(Building building)
     {
-
+        buildingTo = building;
+        _renderer.Init(buildingFrom, buildingTo);
+        AudioController.singleton.PlayPipeTensionSoundOFF();
+        AudioController.singleton.StopScreamSound();
     }
 
     public void BrokePipe()
@@ -40,6 +42,7 @@ public class Rope : MonoBehaviour
         upperBuilding = buildingFrom.transform.position.y > buildingTo.transform.position.y ? buildingFrom : buildingTo;
 
         buildingFrom = upperBuilding;
+        buildingToPrev = buildingTo;
         buildingTo = null;
 
         BrokenPipe = true;
@@ -66,6 +69,14 @@ public class Rope : MonoBehaviour
         if(_renderer._length > _ropeLength)
         { 
             BrokePipe();
+        }
+
+        if(BrokenPipe)
+        {
+            if((buildingFrom.transform.position - buildingToPrev.transform.position).magnitude <= _ropeLength)
+            {
+                RepairPipe(buildingToPrev);
+            }
         }
     }
 
@@ -122,8 +133,7 @@ public class Rope : MonoBehaviour
                 }
             }
             //счетчик смертей
-            //DeathCounter += drops;
-            OnHumanDrops?.Invoke(drops);
+            Building.DeathCounter += drops;
 
             AudioController.singleton.PlayPipeTensionSoundONN();
             AudioController.singleton.PlayScreamSound();

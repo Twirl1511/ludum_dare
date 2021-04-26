@@ -51,7 +51,7 @@ public class RopeRendering : MonoBehaviour
         buildingTo = null;
 
         _broken = true;
-        _p1.parent = null;
+        _p1.parent = _p2;
         _p1.position = GetMiddlePos();
         Quaternion rot = Quaternion.LookRotation((_p2.position - _p1.position).normalized);
         _p1.rotation = rot;
@@ -68,6 +68,8 @@ public class RopeRendering : MonoBehaviour
     {
         buildingFrom = from;
         buildingTo = to;
+
+        _humanParticles.Stop();
 
         SetRopeBase();
     }
@@ -99,9 +101,10 @@ public class RopeRendering : MonoBehaviour
         _p2.parent = t;
 
         t = buildingTo.PipeInputs[0];
+
         foreach (Transform p in buildingTo.PipeInputs)
         {
-            if ((_p1.parent.position - p.position).magnitude < (_p1.parent.position - t.position).magnitude)
+            if ((_p1.position - p.position).magnitude < (_p1.position - t.position).magnitude)
             {
                 t = p;
             }

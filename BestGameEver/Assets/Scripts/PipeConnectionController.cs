@@ -5,21 +5,34 @@ using UnityEngine;
 public class PipeConnectionController : MonoBehaviour
 {
     [HideInInspector] public PipeConnect _selected;
-    [HideInInspector] public Rope _rope;
     public LayerMask LayerMask;
+
+    public static PipeConnectionController Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
-        return;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask))
+        if (Input.GetMouseButtonDown(0) && _selected != null)
         {
-            if (hit.collider.TryGetComponent<Building>(out Building building))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask))
             {
-                _selected = null;
-                //_rope.
+                if (hit.collider.TryGetComponent<Building>(out Building building))
+                {
+                    float distanse = Vector3.Distance(_selected.rope.buildingFrom.transform.position, building.transform.position);
+                    if (distanse <= (_selected.rope._ropeLength) && _selected.rope.buildingFrom != building)
+                    {
+                        _selected.rope.RepairPipe(building);
+                    }
+                    _selected.selection.SetActive(false);
+                    _selected = null;
+                }
             }
         }
     }
