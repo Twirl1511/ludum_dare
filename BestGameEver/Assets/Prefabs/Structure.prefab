@@ -344,13 +344,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 0}
   _production: 0
-  _productionIncrementSpeed: 60
-  _productionSpeed: 0
+  _productionIncrementSpeed: 99999
+  _productionSpeed: 1
   ConnectedBuilding: {fileID: 0}
   PipePosition: {fileID: 2099654535270563670}
   _ropeRender: {fileID: 7507563641135761222}
   _platform: {fileID: 0}
-  _maxMass: 500
+  _maxMass: 2000
   BrokenPipe: 0
   HasPipe: 1
   PipeInputs:
@@ -360,11 +360,19 @@ MonoBehaviour:
   - {fileID: 2456057727781012096}
   _suckPower:
   - Height: -99999
-    SuckPower: 2
-  - Height: 0.05
     SuckPower: 3
-  - Height: 2
+  - Height: -1.5
     SuckPower: 4
+  - Height: -0.5
+    SuckPower: 5
+  - Height: 0.5
+    SuckPower: 6
+  - Height: 1
+    SuckPower: 7
+  - Height: 1.5
+    SuckPower: 8
+  - Height: 2
+    SuckPower: 9
   _dropSpeed:
   - Humans: 1
     DropPerSec: 0
