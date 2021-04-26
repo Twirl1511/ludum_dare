@@ -45,6 +45,7 @@ public class Population : MonoBehaviour
         if (Building.DeathCounter >= DeathToLoose)
         {
             _loosePanel.SetActive(true);
+            Building.DeathCounter = 0;
             Pause.State = Pause.States.Pause;
         }
         
