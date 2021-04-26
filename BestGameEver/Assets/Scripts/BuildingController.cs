@@ -12,6 +12,7 @@ public class BuildingController : MonoBehaviour
     private Vector3 _startPosition;
     private Building _baseBuilding = null;
     [SerializeField] private Building _prefabStructure;
+    [SerializeField] private Rope _prefabRope;
     [SerializeField] private float _buildCD = 2f;
     private bool _canBuild = true;
 
@@ -93,17 +94,20 @@ public class BuildingController : MonoBehaviour
         /// для отображения количества людей в здании
         building.GetComponent<ShowPopulation>()._platform = building._platform;
         //building._platform.InitFall();
-        building.ConnectedBuilding = _baseBuilding;
-        building._ropeRender._building = building;
-        building._ropeRender.SetRopeBase(_baseBuilding);
+
+        Rope rope = Instantiate(_prefabRope, position, Quaternion.identity);
+        rope.Init(_baseBuilding, building);
+
+        //building.ConnectedBuilding = _baseBuilding;
+        //building._ropeRender._building = building;
+        //building._ropeRender.SetRopeBase(_baseBuilding);
 
         //building._ropeRender.SetPos1(_baseBuilding.PipePosition);
         //building._ropeRender.SetPos2(building.PipePosition);
 
-        building._ropeRender.Init();
-        building._ropeRender.SetActive(true);
+        //building._ropeRender.Init();
+        //building._ropeRender.SetActive(true);
     }
-
 
     private PositionToBuild highlightPosition;
     private void HiglightPositionOn(PositionToBuild from)
