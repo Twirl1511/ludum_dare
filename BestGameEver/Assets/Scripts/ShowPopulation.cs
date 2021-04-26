@@ -6,15 +6,14 @@ using UnityEngine.UI;
 public class ShowPopulation : MonoBehaviour
 {
     [SerializeField] private Text _populationCount;
+    [SerializeField] private Text _incomeCount;
+    public Building building;
     public PlatformMove _platform;
-    void Start()
-    {
-        
-    }
 
 
     void Update()
     {
         _populationCount.text = _platform.Mass.ToString("0");
+        _incomeCount.text = building._production.ToString("0");
     }
 }

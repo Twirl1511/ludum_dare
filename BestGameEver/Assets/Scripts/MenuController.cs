@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject _mainMenu;
+    [SerializeField] private GameObject _tipsPanel;
     [SerializeField] private GameObject _gameCanvas;
     [SerializeField] private GameObject _creditsMenu;
     [SerializeField] private GameObject _continueButton;
@@ -41,13 +42,19 @@ public class MenuController : MonoBehaviour
         _continueButton.SetActive(true);
         Pause.State = Pause.States.Pause;
     }
+    public void STARTTIPS()
+    {
+        _tipsPanel.SetActive(false);
+        Pause.State = Pause.States.Play;
+    }
 
     public void OnStart()
     {
+        
         _mainMenu.SetActive(false);
         _LooseMenu.SetActive(false);
         _gameCanvas.SetActive(true);
-        Pause.State = Pause.States.Play;
+        //Pause.State = Pause.States.Play;
         
     }
     public void OnContinue()

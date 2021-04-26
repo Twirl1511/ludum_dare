@@ -4,7 +4,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     [SerializeField] private MeshRenderer _renderer;
-    [SerializeField] private int _production = 1;
+    [SerializeField] public int _production = 1;
     [SerializeField] private int _productionIncrementSpeed = 60;
     [SerializeField] private float _productionSpeed = 1;
     public Transform PipePosition;
