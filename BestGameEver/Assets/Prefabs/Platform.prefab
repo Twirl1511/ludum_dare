@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f237215ff3f05a146b0d826e1f5a4542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standartMaterial: {fileID: 2100000, guid: 4248a1b5c33b3fa40a590f6aaa7006b2, type: 2}
+  standartMaterial: {fileID: 2100000, guid: 6ea665457f127b9429140a420773179d, type: 2}
   transparentMaterial: {fileID: 2100000, guid: 223ebe4d19bb378479b2ac0b3847b4d0, type: 2}
 --- !u!1 &4495408169410146159
 GameObject:
@@ -147,6 +147,7 @@ MonoBehaviour:
     CD: 5
   _cd: 1
   _deltaTimer: -1
+  _maxMassIncriment: 10
 --- !u!114 &3282339842699594537
 MonoBehaviour:
   m_ObjectHideFlags: 0
