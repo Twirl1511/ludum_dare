@@ -51,6 +51,8 @@ public class Population : MonoBehaviour
         }
         if (Building.DeathCounter >= DeathToLoose)
         {
+
+
             Lose();
         }
         

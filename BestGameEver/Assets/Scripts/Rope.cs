@@ -16,6 +16,17 @@ public class Rope : MonoBehaviour
     [SerializeField] private Dependency[] _suckPower;
     [SerializeField] private DependencyPipe[] _dropSpeed;
 
+    public bool StartACtive = false;
+
+    private void Awake()
+    {
+        if(StartACtive)
+        {
+            InvokeRepeating(nameof(Suck), SuckSpeed, SuckSpeed);
+
+        }
+    }
+
     public void Init(Building from, Building to)
     {
         from.pipes.Add(this);
