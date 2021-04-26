@@ -57,9 +57,8 @@ public class PlatformMove : MonoBehaviour
         //    {
         float newY = _startPosition.y - ((int)_maxMass / (int)50) * moveDistance;
         transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
-        AudioController.singleton.PlayPlatformSound();
-        //SetNewCD();
-        //_deltaTimer = 0f;
+                //SetNewCD();
+                //_deltaTimer = 0f;
         //    }
         //}
     }
