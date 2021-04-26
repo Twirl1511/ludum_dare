@@ -73,7 +73,7 @@ public class Building : MonoBehaviour
             _platform.Mass += _pipeSuckPower;
         }
 
-        if(BrokenPipe)
+        if(BrokenPipe && _platform.Mass > 0f)
         {
             /// выпадающие людишки
             float drops = 0f;
