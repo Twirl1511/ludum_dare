@@ -847,6 +847,11 @@ PrefabInstance:
       propertyPath: _suckPower.Array.data[1].SuckPower
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1088398695805626448, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a908426ed7776f46896fb2a404a9696, type: 2}
     - target: {fileID: 1913643259377755525, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
         type: 3}
       propertyPath: _platform
@@ -2148,7 +2153,7 @@ PrefabInstance:
     - target: {fileID: 7255956016137122564, guid: 298c4516795f5c541851ac8246e2d740,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7255956016137122564, guid: 298c4516795f5c541851ac8246e2d740,
         type: 3}
