@@ -8,6 +8,7 @@ public class RopeRendering : MonoBehaviour
     [SerializeField] public Transform _p2;
     [SerializeField] private float _pointStep = 0.2f;
     [SerializeField] private float _tension = 1f;
+    [SerializeField] private PipeConnect _pipeConnect;
 
     [HideInInspector] public float _length;
     //[HideInInspector] public Building _building;
@@ -57,6 +58,10 @@ public class RopeRendering : MonoBehaviour
         _humanParticles.transform.position = _p1.position;
         _humanParticles.transform.parent = _p1;
         _humanParticles.Play();
+
+        _pipeConnect.gameObject.SetActive(true);
+        _pipeConnect.transform.position = _p1.position;
+        _pipeConnect.transform.parent = _p1;
     }
 
     public void Init(Building from, Building to)

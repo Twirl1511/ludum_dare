@@ -10,9 +10,11 @@ public class Rope : MonoBehaviour
 
     [HideInInspector] public int _currentSuckIndex = 0;
     [HideInInspector] public int _suckArrows = 0;
+    [HideInInspector] public float SuckSpeed = 1f;
     [HideInInspector] public float _pipeSuckPower = 0;
     [SerializeField] private Dependency[] _suckPower;
     [SerializeField] private DependencyPipe[] _dropSpeed;
+
 
     public static event System.Action<float> OnHumanDrops;
 
@@ -23,8 +25,13 @@ public class Rope : MonoBehaviour
         _renderer = GetComponent<RopeRendering>();
         _renderer.Init(from, to);
 
-        InvokeRepeating(nameof(Suck), 0.5f, 0.5f);
+        InvokeRepeating(nameof(Suck), SuckSpeed, SuckSpeed);
         CalculateSuckPower();
+    }
+
+    public void RepairPipe()
+    {
+
     }
 
     public void BrokePipe()
