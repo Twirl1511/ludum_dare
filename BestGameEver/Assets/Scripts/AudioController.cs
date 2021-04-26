@@ -39,15 +39,25 @@ public class AudioController : MonoBehaviour
         if (!_clickSound.isPlaying)
             _clickSound.Play();
     }
-    public void PlayPipeTensionSound(bool flag)
+
+    private bool _tensFlag = true;
+    public void PlayPipeTensionSound()
     {
-        if (flag)
+        if (_tensFlag)
         {
             _pipeTensionSound.Play();
+            _tensFlag = false;
+            Invoke(nameof(PlayPipeTensionSoundONN), 3);
         }
+        
         
     }
 
+
+    public void PlayPipeTensionSoundONN()
+    {
+        _tensFlag = true;
+    }
 
 }
 

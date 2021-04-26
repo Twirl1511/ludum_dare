@@ -22,8 +22,8 @@ public class Rope : MonoBehaviour
         }
         if (renderer._length > _ropeLength - 0.2f)
         {
-            print(1);
-            AudioController.singleton.PlayPipeTensionSound(true);
+            print("tension sound");
+            AudioController.singleton.PlayPipeTensionSound();
         }
 
         

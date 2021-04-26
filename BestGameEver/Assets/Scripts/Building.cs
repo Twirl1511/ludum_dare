@@ -87,7 +87,8 @@ public class Building : MonoBehaviour
             }
             //счетчик смертей
             DeathCounter += drops;
-            AudioController.singleton.PlayPipeTensionSound(false);
+            /// возвращаем возможность проигрываться звуку, да костыль!
+            AudioController.singleton.PlayPipeTensionSoundONN();
             AudioController.singleton.PlayScreamSound();
             
             _platform.Mass -= drops;
