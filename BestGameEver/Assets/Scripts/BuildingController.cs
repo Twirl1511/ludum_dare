@@ -43,6 +43,7 @@ public class BuildingController : MonoBehaviour
                     }
                     _baseBuilding = positionToBuild.building;
                     _baseBuilding.Highlight(true);
+                    AudioController.singleton.PlayClickSound();
                     /// подстветка клеток где можно строить
                     if(highlightPosition != null)
                     {

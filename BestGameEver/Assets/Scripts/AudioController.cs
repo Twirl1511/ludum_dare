@@ -5,37 +5,47 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     public static AudioController singleton;
-    private AudioSource _audioSource;
-    [SerializeField] private AudioClip _buildSound;
-    [SerializeField] private AudioClip _screamSound;
-    [SerializeField] private AudioClip _platformMoveSound;
+    [SerializeField] private AudioSource _buildSound;
+    [SerializeField] private AudioSource _clickSound;
+    [SerializeField] private AudioSource _screamSound;
+    [SerializeField] private AudioSource _platformMoveSound;
+    [SerializeField] private AudioSource _pipeTensionSound;
     private void Awake()
     {
         singleton = this;
     }
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+
     }
 
     public void PlayBuildSound()
     {
-        _audioSource.clip = _buildSound;
-        if (!_audioSource.isPlaying)
-            _audioSource.Play();
-
+        if (!_buildSound.isPlaying)
+            _buildSound.Play();
     }
     public void PlayScreamSound()
     {
-        _audioSource.clip = _screamSound;
-        if (!_audioSource.isPlaying)
-            _audioSource.Play();
+        if (!_screamSound.isPlaying)
+            _screamSound.Play();
     }
     public void PlayPlatformSound()
     {
-        _audioSource.clip = _platformMoveSound;
-        if (!_audioSource.isPlaying)
-            _audioSource.Play();
+        if (!_platformMoveSound.isPlaying)
+            _platformMoveSound.Play();
+    }
+    public void PlayClickSound()
+    {
+        if (!_clickSound.isPlaying)
+            _clickSound.Play();
+    }
+    public void PlayPipeTensionSound(bool flag)
+    {
+        if (flag)
+        {
+            _pipeTensionSound.Play();
+        }
+        
     }
 
 

@@ -43,7 +43,6 @@ public class HiglightPositionsToBuild : MonoBehaviour
     public void HiglightOff()
     {
         transform.DOMoveY(30, 1).From();
-        print(10);
         StartCoroutine(SetAtciveFalse());
     }
 

@@ -87,7 +87,9 @@ public class Building : MonoBehaviour
             }
             //счетчик смертей
             DeathCounter += drops;
+            AudioController.singleton.PlayPipeTensionSound(false);
             AudioController.singleton.PlayScreamSound();
+            
             _platform.Mass -= drops;
             if (_platform.Mass < 0f)
                 _platform.Mass = 0f;

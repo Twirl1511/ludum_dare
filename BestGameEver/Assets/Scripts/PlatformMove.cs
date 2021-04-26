@@ -46,7 +46,8 @@ public class PlatformMove : MonoBehaviour
     //    _startPosition = transform.position;
     //    _deltaTimer = 0f;
     //}
-
+    private float buffer;
+    private bool flag = false;
     void UpdatePos()
     {
         //if (_deltaTimer >= 0f)
@@ -56,8 +57,17 @@ public class PlatformMove : MonoBehaviour
         //    if(_deltaTimer >= _cd)
         //    {
         float newY = _startPosition.y - ((int)_maxMass / (int)50) * moveDistance;
+        if (buffer != newY && flag)
+        {
+            AudioController.singleton.PlayPlatformSound();
+        }
+        flag = true;
         transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
-        AudioController.singleton.PlayPlatformSound();
+        buffer = newY;
+        
+        
+
+
         //SetNewCD();
         //_deltaTimer = 0f;
         //    }

@@ -20,5 +20,12 @@ public class Rope : MonoBehaviour
             building.ConnectedBuilding = null;
             building.BrokenPipe = true;
         }
+        if (renderer._length > _ropeLength - 0.2f)
+        {
+            print(1);
+            AudioController.singleton.PlayPipeTensionSound(true);
+        }
+
+        
     }
 }
