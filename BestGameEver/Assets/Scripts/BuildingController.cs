@@ -14,7 +14,7 @@ public class BuildingController : MonoBehaviour
     [SerializeField] private Building _prefabStructure;
     [SerializeField] private Rope _prefabRope;
     [SerializeField] private float _buildCD = 2f;
-    private bool _canBuild = true;
+    private bool _canBuild = true; 
 
     [SerializeField] private PositionToBuild _startBuilding;
 
@@ -82,9 +82,13 @@ public class BuildingController : MonoBehaviour
                             _isFoundStart = false;
 
                         }
-                        _baseBuilding.Highlight(false);
+                        //_baseBuilding.Highlight(false);
                     }
-                } 
+                }
+            }
+            else
+            {
+                HiglightPositionOff();
             }
         }
     }
@@ -140,7 +144,10 @@ public class BuildingController : MonoBehaviour
     
     private void HiglightPositionOff()
     {
-        highlightPosition.ColliderToHihlightPositionToBuild.GetComponent<HiglightPositionsToBuild>().HiglightOff();
-        highlightPosition = null;
+        if (highlightPosition != null)
+        {
+            highlightPosition.ColliderToHihlightPositionToBuild.GetComponent<HiglightPositionsToBuild>().HiglightOff();
+            highlightPosition = null;
+        }
     }
 }

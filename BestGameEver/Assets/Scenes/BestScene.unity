@@ -418,6 +418,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 20574449}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &57551488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 237819410909700285, guid: 395b87185784cc646b4da79e406bb8d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 363655345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &70658329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,7 +2988,7 @@ PrefabInstance:
     - target: {fileID: 237819410909700285, guid: 395b87185784cc646b4da79e406bb8d8,
         type: 3}
       propertyPath: m_Text
-      value: Sound ON/OFF
+      value: Sound ON
       objectReference: {fileID: 0}
     - target: {fileID: 237819410909700285, guid: 395b87185784cc646b4da79e406bb8d8,
         type: 3}
@@ -3013,6 +3025,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sound
+      objectReference: {fileID: 0}
+    - target: {fileID: 325335677741888835, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272466670448286081, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3649942151551351150, guid: 395b87185784cc646b4da79e406bb8d8,
         type: 3}
@@ -3121,12 +3143,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: m_Transition
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
@@ -3136,7 +3168,17 @@ PrefabInstance:
       objectReference: {fileID: 447143601}
     - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 608371348}
+    - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
@@ -3146,7 +3188,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeText
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024818759896911688, guid: 395b87185784cc646b4da79e406bb8d8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6949721213226273878, guid: 395b87185784cc646b4da79e406bb8d8,
@@ -4482,6 +4534,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607884402}
   m_CullTransparentMesh: 0
+--- !u!1 &608371347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 325335677741888835, guid: 395b87185784cc646b4da79e406bb8d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 363655345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &608371348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608371347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7560368737432504e9a8c3e9373785a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 57551488}
+  s1: Sound OFF
+  s2: Sound ON
 --- !u!4 &611912285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7255956016137122564, guid: 298c4516795f5c541851ac8246e2d740,
@@ -6946,7 +7019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1125659099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13081,7 +13154,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Eny colomn gets down each 50 citizens
+  m_Text: Eny collum gets down each 50 citizens
 --- !u!222 &1386603910
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22378,7 +22451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &4509824312255237820
 MeshFilter:
   m_ObjectHideFlags: 0
