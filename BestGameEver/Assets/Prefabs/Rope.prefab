@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 5105240050535346386}
   - component: {fileID: 4614407101088709607}
   - component: {fileID: 6925566219608090169}
+  - component: {fileID: 3831814057975949281}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -470,6 +471,7 @@ MonoBehaviour:
   _tension: 0.1
   _pipeConnect: {fileID: 7244348969529209489}
   _length: 0
+  draaaw: 0
   buildingFrom: {fileID: 0}
   buildingTo: {fileID: 0}
 --- !u!114 &5105240050535346386
@@ -486,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingFrom: {fileID: 0}
   buildingTo: {fileID: 0}
+  buildingToPrev: {fileID: 0}
   _ropeLength: 2
   BrokenPipe: 0
   _renderer: {fileID: 0}
@@ -635,6 +638,37 @@ MonoBehaviour:
   _suckPower: {fileID: 3873534386145885745}
   _arrowScale: 0.03
   _rope: {fileID: 5105240050535346386}
+--- !u!114 &3831814057975949281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4811437465847375591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9feb1e6723f6e464996c1becadb9462f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedCoef: 1
+  _renderer: {fileID: 4614407101088709607}
+  _offset: {x: 0, y: 0}
+  _rope: {fileID: 5105240050535346386}
+  _offsetSpeed:
+  - Element: 0
+    Offset: 0.25
+  - Element: 1
+    Offset: 0.33
+  - Element: 2
+    Offset: 0.5
+  - Element: 3
+    Offset: 1
+  - Element: 4
+    Offset: 1.5
+  - Element: 5
+    Offset: 2
+  - Element: 6
+    Offset: 3
 --- !u!1 &7556014311955861247
 GameObject:
   m_ObjectHideFlags: 0

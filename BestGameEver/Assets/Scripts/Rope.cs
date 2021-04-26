@@ -46,6 +46,13 @@ public class Rope : MonoBehaviour
         Building upperBuilding;
         upperBuilding = buildingFrom.transform.position.y > buildingTo.transform.position.y ? buildingFrom : buildingTo;
 
+        if(buildingFrom.mainBase || buildingTo.mainBase)
+        {
+            Population.Instance.Lose();
+            Time.timeScale = 0f;
+            return;
+        }
+
         buildingFrom = upperBuilding;
         buildingToPrev = buildingTo;
         buildingTo.pipes.Remove(this);
@@ -53,13 +60,6 @@ public class Rope : MonoBehaviour
         BrokenPipe = true;
 
         _renderer.BrokePipe(buildingFrom);
-
-        //_broken = true;
-        //_p2.parent = null;
-        //_p2.position = GetMiddlePos();
-        //Quaternion rot = Quaternion.LookRotation((_p2.position - _p1.position).normalized);
-        //_p2.rotation = rot;
-        //_humanParticles.Play();
     }
 
     private void Suck()
