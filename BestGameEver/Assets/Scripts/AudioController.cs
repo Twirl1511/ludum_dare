@@ -29,6 +29,11 @@ public class AudioController : MonoBehaviour
         if (!_screamSound.isPlaying)
             _screamSound.Play();
     }
+    public void StopScreamSound()
+    {
+        if (_screamSound.isPlaying)
+            _screamSound.Stop();
+    }
     public void PlayPlatformSound()
     {
         if (!_platformMoveSound.isPlaying)
@@ -49,15 +54,15 @@ public class AudioController : MonoBehaviour
             _tensFlag = false;
             Invoke(nameof(PlayPipeTensionSoundONN), 3);
         }
-        
-        
     }
-
 
     public void PlayPipeTensionSoundONN()
     {
         _tensFlag = true;
     }
-
+    public void PlayPipeTensionSoundOFF()
+    {
+        _tensFlag = false;
+    }
 }
 

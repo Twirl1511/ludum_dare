@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PipeConnect : MonoBehaviour
 {
-    public LayerMask LayerMask;
-    public PipeConnectionController controller;
     public Rope rope;
+    public GameObject selection;
 
     private void OnMouseDown()
     {
-        controller._selected = this;
-
+        //PipeConnectionController.Instance._selected = this;
+        //selection.SetActive(true);
     }
 }

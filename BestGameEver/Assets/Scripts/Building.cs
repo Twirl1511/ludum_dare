@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Building : MonoBehaviour
 {
@@ -11,29 +12,10 @@ public class Building : MonoBehaviour
     public int _maxMass = 500;
     public bool HasPipe = true;
     public Transform[] PipeInputs;
+    [HideInInspector] public List<Rope> pipes = new List<Rope>();
 
     // счетчик смертей
     public static float DeathCounter;
-
-    private void OnEnable()
-    {
-        Rope.OnHumanDrops += OnHumanDrops;
-    }
-
-    private void OnDisable()
-    {
-        Rope.OnHumanDrops -= OnHumanDrops;
-    }
-
-    private void OnHumanDrops(float amount)
-    {
-        DeathCounter += amount;
-    }
-
-    private void OnMouseDown()
-    {
-        print("Building");
-    }
 
     void Start()
     {
