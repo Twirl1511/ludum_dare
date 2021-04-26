@@ -21,6 +21,9 @@ public class Building : MonoBehaviour
     [HideInInspector] public int _suckArrows = 0;
     [HideInInspector] public float _pipeSuckPower = 0;
 
+    // счетчик смертей
+    public static float DeathCounter;
+
     //[Header("Формула")]
     //[SerializeField] private float multiplyBy = 0.107f;
     //[SerializeField] private float powerBy = 1.05f;
@@ -72,6 +75,7 @@ public class Building : MonoBehaviour
 
         if(BrokenPipe)
         {
+            /// выпадающие людишки
             float drops = 0f;
             for (int i = 0; i < _dropSpeed.Length; i++)
             {
@@ -81,6 +85,9 @@ public class Building : MonoBehaviour
                     break;
                 }
             }
+            //счетчик смертей
+            DeathCounter += drops;
+
             _platform.Mass -= drops;
             if (_platform.Mass < 0f)
                 _platform.Mass = 0f;

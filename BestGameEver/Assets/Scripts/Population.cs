@@ -10,21 +10,28 @@ public class Population : MonoBehaviour
     public Text TotalPopulationText;
     public Text TotalDeathText;
 
+    public float PopulationToWin;
+
     void Start()
     {
-        
+        InvokeRepeating(nameof(ShowPopulation), 1, 1);    
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ShowPopulation()
     {
         TotalMass = 0;
         foreach (var platform in Platforms)
         {
             TotalMass += platform.Mass;
         }
+        
         TotalPopulationText.text = TotalMass.ToString("0");
-        //TotalDeathText.text = 
+        TotalDeathText.text = Building.DeathCounter.ToString("0");
+
+        if(TotalMass >= PopulationToWin)
+        {
+            print("победа!");
+        }
     }
 
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorForPlatform : MonoBehaviour
+public class WinCheck : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float PopulationToWIn;
     void Start()
     {
         
