@@ -8,14 +8,14 @@ public class PipeLoseChecker : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating(nameof(Check), checkTimer, checkTimer);
+        //InvokeRepeating(nameof(Check), checkTimer, checkTimer);
     }
 
-    void Check()
-    {
-        if(building.pipes.Count <= 0)
-        {
-            popl.Lose();
-        }
-    }
+    //void Check()
+    //{
+    //    if(building.pipes.Count <= 0)
+    //    {
+    //        popl.Lose();
+    //    }
+    //}
 }

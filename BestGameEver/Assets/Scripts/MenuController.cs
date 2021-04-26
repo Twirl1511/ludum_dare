@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    public static MenuController singleton;
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _tipsPanel;
     [SerializeField] private GameObject _gameCanvas;
@@ -13,12 +14,15 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _LooseMenu;
     [SerializeField] private AudioListener _mainAudioListener;
+    [SerializeField] private GameObject _winMenu;
+    [SerializeField] private GameObject _HINT;
 
     private static bool _isFirstStart = true;
 
 
     private void Start()
     {
+        singleton = this;
         _mainMenu.SetActive(true);
         _gameCanvas.SetActive(false);
         _continueButton.SetActive(false);
@@ -29,7 +33,6 @@ public class MenuController : MonoBehaviour
         {
             _gameCanvas.SetActive(true);
             OnStart();
-            
         }
     }
 
@@ -65,6 +68,7 @@ public class MenuController : MonoBehaviour
     }
     public void OnRestart()
     {
+        Building.DeathCounter = 0;
         _isFirstStart = false;
         SceneManager.LoadScene(0);
         Pause.State = Pause.States.Play;
@@ -87,7 +91,11 @@ public class MenuController : MonoBehaviour
         _creditsMenu.SetActive(false);
         _mainMenu.SetActive(true);
     }
-
+    public void OnBackFromWin()
+    {
+        _winMenu.SetActive(false);
+        _mainMenu.SetActive(true);
+    }
 
     public void OnSound()
     {
@@ -103,5 +111,17 @@ public class MenuController : MonoBehaviour
     public void OnExit()
     {
         Application.Quit();
+    }
+
+
+    public void ShowHint()
+    {
+        _HINT.SetActive(true);
+        Pause.State = Pause.States.Pause;
+    }
+    public void ResumePause()
+    {
+        _HINT.SetActive(false);
+        Pause.State = Pause.States.Play;
     }
 }

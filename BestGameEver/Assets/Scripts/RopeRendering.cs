@@ -137,6 +137,14 @@ public class RopeRendering : MonoBehaviour
             _line.SetPosition(i, (basePos + direction * i * _pointStep) + Vector3.down * _tension * (_curve.Evaluate((i * _pointStep) / _length)));
         }
         _line.SetPosition(0, basePos);
-        _line.SetPosition(_line.positionCount - 1, endPos);
+        try
+        {
+            _line.SetPosition(_line.positionCount - 1, endPos);
+        }
+        catch
+        {
+            /// _line.SetPosition(_line.positionCount - 1, endPos);
+        }
+
     }
 }

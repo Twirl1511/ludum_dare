@@ -11,6 +11,8 @@ public class PlatformMove : MonoBehaviour
     [SerializeField] private float _cd = 1f;
     [SerializeField] private float _deltaTimer = -1f;
     [SerializeField] private float _maxMassIncriment = 10f;
+    public static bool _isFirstUpdate = true;
+    
 
     // Mass = 0   |   Height = 0
     // Mass = 2   |   Height = -0.2
@@ -60,18 +62,29 @@ public class PlatformMove : MonoBehaviour
         if (buffer != newY && flag)
         {
             AudioController.singleton.PlayPlatformSound();
+            Invoke(nameof(GetDownHint), 1);
         }
         flag = true;
         transform.DOMoveY(newY, speed).SetEase(Ease.Linear);
         buffer = newY;
-        
-        
 
+
+        
+            
+        
 
         //SetNewCD();
         //_deltaTimer = 0f;
         //    }
         //}
+    }
+    public void GetDownHint()
+    {
+        if (_isFirstUpdate)
+        {
+            MenuController.singleton.ShowHint();
+            _isFirstUpdate = false;
+        }
     }
 
     //private void SetNewCD()

@@ -13,7 +13,7 @@ public class Population : MonoBehaviour
     public float PopulationToWin;
     public float DeathToLoose;
 
-    [SerializeField] private GameObject _creditsPanel;
+    [SerializeField] private GameObject _winPanel;
     [SerializeField] private GameObject _exitButton;
     [SerializeField] private GameObject _backButton;
 
@@ -44,7 +44,7 @@ public class Population : MonoBehaviour
 
         if(TotalMass >= PopulationToWin)
         {
-            _creditsPanel.SetActive(true);
+            _winPanel.SetActive(true);
             _exitButton.SetActive(true);
             _backButton.SetActive(false);
             Pause.State = Pause.States.Pause;

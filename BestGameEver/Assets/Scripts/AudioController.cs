@@ -10,6 +10,11 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioSource _screamSound;
     [SerializeField] private AudioSource _platformMoveSound;
     [SerializeField] private AudioSource _pipeTensionSound;
+    [SerializeField] private GameObject MenuMusic;
+   
+    [SerializeField] private AudioSource GameMusicSound;
+    [SerializeField] private AudioSource MenuMusicSound;
+
     private void Awake()
     {
         singleton = this;
@@ -17,6 +22,19 @@ public class AudioController : MonoBehaviour
     private void Start()
     {
 
+    }
+    private void Update()
+    {
+        if (MenuMusic.activeSelf)
+        {
+            MenuMusicSound.enabled = true;
+            GameMusicSound.enabled = false;
+        }
+        else
+        {
+            GameMusicSound.enabled = true;
+            MenuMusicSound.enabled = false;
+        }
     }
 
     public void PlayBuildSound()
@@ -64,5 +82,10 @@ public class AudioController : MonoBehaviour
     {
         _tensFlag = false;
     }
+
+
+
+
+
 }
 
