@@ -361,17 +361,17 @@ MonoBehaviour:
   _suckPower:
   - Height: -99999
     SuckPower: 3
-  - Height: -1.5
+  - Height: -1
     SuckPower: 4
-  - Height: -0.5
+  - Height: -0.3
     SuckPower: 5
-  - Height: 0.5
+  - Height: 0.4
     SuckPower: 6
-  - Height: 1
+  - Height: 0.8
     SuckPower: 7
-  - Height: 1.5
+  - Height: 1.3
     SuckPower: 8
-  - Height: 2
+  - Height: 1.7
     SuckPower: 9
   _dropSpeed:
   - Humans: 1
