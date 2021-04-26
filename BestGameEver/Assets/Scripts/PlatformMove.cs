@@ -10,6 +10,7 @@ public class PlatformMove : MonoBehaviour
     [SerializeField] private Dependency[] _fallCD;
     [SerializeField] private float _cd = 1f;
     [SerializeField] private float _deltaTimer = -1f;
+    [SerializeField] private float _maxMassIncriment = 10f;
 
     // Mass = 0   |   Height = 0
     // Mass = 2   |   Height = -0.2
@@ -29,7 +30,7 @@ public class PlatformMove : MonoBehaviour
         {
             _mass = value;
             if (_maxMass < _mass)
-                _maxMass = _mass;
+                _maxMass = _mass;  
             UpdatePos();
             //SetNewCD();
         }
