@@ -26,7 +26,6 @@ public class MenuController : MonoBehaviour
 
         if (!_isFirstStart)
         {
-            _LooseMenu.SetActive(false);
             _gameCanvas.SetActive(true);
             OnStart();
             
@@ -46,6 +45,7 @@ public class MenuController : MonoBehaviour
     public void OnStart()
     {
         _mainMenu.SetActive(false);
+        _LooseMenu.SetActive(false);
         _gameCanvas.SetActive(true);
         Pause.State = Pause.States.Play;
         
@@ -67,9 +67,7 @@ public class MenuController : MonoBehaviour
 
     public void OnRestartFromLoose()
     {
-        _isFirstStart = false;
-        _LooseMenu.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0); 
     }
 
     public void OnCredits()
