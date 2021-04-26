@@ -11,6 +11,13 @@ public class Population : MonoBehaviour
     public Text TotalDeathText;
 
     public float PopulationToWin;
+    public float DeathToLoose;
+
+    [SerializeField] private GameObject _creditsPanel;
+    [SerializeField] private GameObject _exitButton;
+    [SerializeField] private GameObject _backButton;
+
+    [SerializeField] private GameObject _loosePanel;
 
     void Start()
     {
@@ -30,8 +37,18 @@ public class Population : MonoBehaviour
 
         if(TotalMass >= PopulationToWin)
         {
-            print("победа!");
+            _creditsPanel.SetActive(true);
+            _exitButton.SetActive(true);
+            _backButton.SetActive(false);
+            Pause.State = Pause.States.Pause;
         }
+        if (Building.DeathCounter >= DeathToLoose)
+        {
+            _loosePanel.SetActive(true);
+            Pause.State = Pause.States.Pause;
+        }
+        
+
     }
 
 }

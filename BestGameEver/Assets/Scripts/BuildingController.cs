@@ -24,6 +24,10 @@ public class BuildingController : MonoBehaviour
     }
     void Update()
     {
+        if(Pause.State == Pause.States.Pause)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;

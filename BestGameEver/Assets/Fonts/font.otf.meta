@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e6e9e554b89406245b15a5d90866fcce
+guid: f56a4cc868b639747b3c67b738344388
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,8 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
+  fontName: mr_TickingTimebombBBG
   fontNames:
-  - Konstanting
+  - mr_TickingTimebombBBG
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
