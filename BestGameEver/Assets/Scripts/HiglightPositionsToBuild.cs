@@ -42,15 +42,16 @@ public class HiglightPositionsToBuild : MonoBehaviour
 
     public void HiglightOff()
     {
-        transform.DOMoveY(30, 1).From();
+        //transform.DOMoveY(30, 1).From();
+        transform.position += Vector3.up * 50f;
         StartCoroutine(SetAtciveFalse());
     }
 
 
     IEnumerator SetAtciveFalse()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.05f);
         gameObject.SetActive(false);
-        
+        transform.position -= Vector3.up * 50f;
     }
 }
