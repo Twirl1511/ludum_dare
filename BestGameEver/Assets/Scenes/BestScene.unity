@@ -1028,7 +1028,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2a908426ed7776f46896fb2a404a9696, type: 2}
+      objectReference: {fileID: 2100000, guid: 7b67fb14c781e7340bd5bfb15723e536, type: 2}
     - target: {fileID: 1913643259377755525, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
         type: 3}
       propertyPath: _platform
@@ -1139,11 +1139,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.095
       objectReference: {fileID: 0}
-    - target: {fileID: 7687163372174287097, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8029272611884494590, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
         type: 3}
       propertyPath: m_IsActive
@@ -1163,7 +1158,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 8341684658235696137, guid: 7cbe2eec7661f3c4aa2a824f1613930e,
+      objectReference: {fileID: 6933531066624563159, guid: b4de27b891432e94dab0438e1d3ddb08,
         type: 3}
     - target: {fileID: 8428746951797912472, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
         type: 3}
@@ -1453,6 +1448,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _prefabStructure: {fileID: 930356346089370186, guid: 0fedb8ab59e9cee4cbd111d1e13bcde2,
+    type: 3}
+  _prefabRope: {fileID: 5105240050535346386, guid: 6721f48ddf571a449be25f8db7b849ad,
     type: 3}
   _buildCD: 1
 --- !u!4 &237664637
