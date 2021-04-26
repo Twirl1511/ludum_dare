@@ -18,6 +18,9 @@ public class Rope : MonoBehaviour
 
     public void Init(Building from, Building to)
     {
+        from.pipes.Add(this);
+        to.pipes.Add(this);
+
         buildingFrom = from;
         buildingToPrev = buildingTo;
         buildingTo = to;
@@ -31,6 +34,7 @@ public class Rope : MonoBehaviour
     public void RepairPipe(Building building)
     {
         buildingTo = building;
+        buildingTo.pipes.Add(this);
         _renderer.Init(buildingFrom, buildingTo);
         AudioController.singleton.PlayPipeTensionSoundOFF();
         AudioController.singleton.StopScreamSound();
@@ -44,8 +48,8 @@ public class Rope : MonoBehaviour
 
         buildingFrom = upperBuilding;
         buildingToPrev = buildingTo;
+        buildingTo.pipes.Remove(this);
         buildingTo = null;
-
         BrokenPipe = true;
 
         _renderer.BrokePipe(buildingFrom);

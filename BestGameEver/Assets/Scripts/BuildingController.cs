@@ -17,12 +17,10 @@ public class BuildingController : MonoBehaviour
     private bool _canBuild = true;
 
     private void Awake()
-
     {
-
         singleton = this;
-
     }
+
     void Update()
     {
         if(Pause.State == Pause.States.Pause)
@@ -101,8 +99,24 @@ public class BuildingController : MonoBehaviour
         building.GetComponent<ShowPopulation>()._platform = building._platform;
         //building._platform.InitFall();
 
-        Rope rope = Instantiate(_prefabRope, position, Quaternion.identity);
-        rope.Init(_baseBuilding, building);
+        Rope pipe = null;
+        foreach(var p in _baseBuilding.pipes)
+        {
+            if(p.BrokenPipe)
+            {
+                pipe = p;
+                break;
+            }
+        }
+        if (pipe == null)
+        {
+            pipe = Instantiate(_prefabRope, position, Quaternion.identity);
+            pipe.Init(_baseBuilding, building);
+        }
+        else
+        {
+            pipe.RepairPipe(building);
+        }
 
         //building.ConnectedBuilding = _baseBuilding;
         //building._ropeRender._building = building;
