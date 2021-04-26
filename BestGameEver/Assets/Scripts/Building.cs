@@ -12,6 +12,7 @@ public class Building : MonoBehaviour
     public int _maxMass = 500;
     public bool HasPipe = true;
     public Transform[] PipeInputs;
+
     [HideInInspector] public List<Rope> pipes = new List<Rope>();
 
     // счетчик смертей
