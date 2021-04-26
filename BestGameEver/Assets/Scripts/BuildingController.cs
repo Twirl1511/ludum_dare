@@ -16,6 +16,8 @@ public class BuildingController : MonoBehaviour
     [SerializeField] private float _buildCD = 2f;
     private bool _canBuild = true;
 
+    [SerializeField] private PositionToBuild _startBuilding;
+
     private void Awake()
     {
         singleton = this;

@@ -1654,6 +1654,7 @@ MonoBehaviour:
   _prefabRope: {fileID: 5105240050535346386, guid: 6721f48ddf571a449be25f8db7b849ad,
     type: 3}
   _buildCD: 1
+  _startBuilding: {fileID: 409796005}
 --- !u!4 &237664637
 Transform:
   m_ObjectHideFlags: 0
@@ -2782,6 +2783,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406043171}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &409796005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3282339842699594537, guid: 298c4516795f5c541851ac8246e2d740,
+    type: 3}
+  m_PrefabInstance: {fileID: 903589531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59010a66d2894c408dca76f9c5ee216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &420115435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4527,16 +4540,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853939497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 18.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1210440751}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.3, y: 10.4}
-  m_SizeDelta: {x: 40, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 36.245003, y: 15.5}
+  m_SizeDelta: {x: -103.490005, y: -61.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853939499
 MonoBehaviour:

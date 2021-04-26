@@ -21,6 +21,7 @@ public class Building : MonoBehaviour
 
     void Start()
     {
+        DeathCounter = 0;
         _renderer = GetComponent<MeshRenderer>();
         InvokeRepeating(nameof(Production), _productionSpeed, _productionSpeed);
         InvokeRepeating(nameof(ProductionIncrement), _productionIncrementSpeed, _productionIncrementSpeed);

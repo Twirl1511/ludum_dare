@@ -57,12 +57,12 @@ public class Rope : MonoBehaviour
         Building upperBuilding;
         upperBuilding = buildingFrom.transform.position.y > buildingTo.transform.position.y ? buildingFrom : buildingTo;
 
-        if(buildingFrom.mainBase || buildingTo.mainBase)
-        {
-            Population.Instance.Lose();
-            Time.timeScale = 0f;
-            return;
-        }
+        //if(buildingFrom.mainBase || buildingTo.mainBase)
+        //{
+        //    Population.Instance.Lose();
+        //    Time.timeScale = 0f;
+        //    return;
+        //}
 
         buildingFrom = upperBuilding;
         buildingToPrev = buildingTo;

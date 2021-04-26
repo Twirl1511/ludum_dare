@@ -13,6 +13,7 @@ public class ShowPopulation : MonoBehaviour
 
     void Update()
     {
+        _platform = building._platform;
         _populationCount.text = _platform.Mass.ToString("0");
         _incomeCount.text = building._production.ToString("0");
     }

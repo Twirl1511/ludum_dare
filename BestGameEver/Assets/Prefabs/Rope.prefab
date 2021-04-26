@@ -489,7 +489,7 @@ MonoBehaviour:
   buildingFrom: {fileID: 0}
   buildingTo: {fileID: 0}
   buildingToPrev: {fileID: 0}
-  _ropeLength: 2
+  _ropeLength: 2.2
   BrokenPipe: 0
   _renderer: {fileID: 0}
   _currentSuckIndex: 0
@@ -524,6 +524,7 @@ MonoBehaviour:
     DropPerSec: 8
   - Humans: 999999
     DropPerSec: 10
+  StartACtive: 0
 --- !u!120 &4614407101088709607
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -669,6 +670,7 @@ MonoBehaviour:
     Offset: 2
   - Element: 6
     Offset: 3
+  speed: 0
 --- !u!1 &7556014311955861247
 GameObject:
   m_ObjectHideFlags: 0
