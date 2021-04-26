@@ -34,6 +34,7 @@ public class Rope : MonoBehaviour
         _renderer.Init(buildingFrom, buildingTo);
         AudioController.singleton.PlayPipeTensionSoundOFF();
         AudioController.singleton.StopScreamSound();
+        BrokenPipe = false;
     }
 
     public void BrokePipe()
